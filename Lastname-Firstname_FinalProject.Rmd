@@ -230,7 +230,7 @@ library(psych)
 
 rm(list = ls())
 # PAGE: Exploratory Analysis
-data <- na.omit(read.csv("data/metaldata.csv", header = TRUE))
+data <- na.omit(read.csv("data/ingredients.csv", header = TRUE))
 #data$DATE <- as.Date(data$DATE, "%m/%d/%Y")
 #data <- data[order(data$DATE),]
 # Compute log differences percent using as.matrix to force numeric type
