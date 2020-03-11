@@ -958,8 +958,8 @@ Trying a different distortion
 library(quantreg)
 #library(dplyr) # use data.df now
 alpha <- 0.95
-u <- quantile(data.df$returns.nickel, alpha )
-x <- data.df.nd[data.df.nd$returns.nickel < u, 2:4]/100
+u <- quantile(data.df$returns.Corn, alpha )
+x <- data.df.nd[data.df.nd$returns.Corn < u, 2:4]/100
 n <- nrow(x)
 p <- ncol(x)
 alpha <-  c(0.01, 0.1) # quantiles at lower (negative) tail
