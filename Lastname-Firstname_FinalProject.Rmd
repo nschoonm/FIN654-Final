@@ -21,24 +21,24 @@ Column
 
 ### Purpose, Process, Product
 
-This group assignment will cover Sessions 7 and 8 (two weeks). We built a simple portfolio in Assignment 3 with equally weighted allocataions to the commodities we traded. We continue with the freight forwarder. We will compute optimal holdings of risky and risk-free assets for the Markowitz mean-variance model. We will then build a simple financial web application. With this tool we can also explore impact of the extremes of distributions of financial returns on portfolio results. 
+This group assignment will cover Sessions 7 and 8 (two weeks). We built a simple portfolio in Assignment 3 with equally weighted allocataions to the commodities we traded. We will represent a restaurant. We will compute optimal holdings of risky and risk-free assets for the Markowitz mean-variance model. We will then build a simple financial web application. With this tool we can also explore impact of the extremes of distributions of financial returns on portfolio results. 
 
 ### Problem
 
-A freight forwarder with a fleet of bulk carriers wants to optimize their portfolio in the metals markets with entry into the nickel business and use of the tramp trade.  Tramp ships are the company's "swing" option without any fixed charter or other constraint. They allow the company flexibility in managing several aspects of freight uncertainty.   They have allocated \$250 million to purchase metals. The company wants us to:
+A restaurant with a several different recipes and menu options wants to optimize their portfolio in the ingrediants markets with entry into the corn business and use of the tramp trade.  Tramp ships are the company's "swing" option without any fixed charter or other constraint. They allow the company flexibility in managing several aspects of freight uncertainty.   They have allocated \$250 million to purchase ingrediants. The company wants us to:
 
 1.	Retrieve and begin to analyze data about potential commodities to diversify into
-2.	Compare potential commodities with existing commodities in conventional metals spot markets
+2.	Compare potential commodities with existing commodities in conventional ingrediant spot markets
 3.	Begin to generate economic scenarios based on events that may, or may not, materialize in the commodities
 4.	The company wants to mitigate their risk by diversifying their cargo loads
 
 ### Data and analysis to inform the decision
 
-- Spot market prices of nickel, copper, and aluminium
-- Nickel and Copper: correlation
-- Nickel and Aluminium: correlation
-- Copper and Aluminium: Correlation
-- Nickel and Copper: Correlation sensitivity to copper dependency
+- Spot market prices of Corn, Soybean, and Wheat
+- Corn and Soybean: correlation
+- Corn and Wheat: correlation
+- Soybean and Wheat: Correlation
+- Corn and Soybean: Correlation sensitivity to Soybean dependency
 - All together: correlations and volaitlities among these indicators
 - Cross-section of rolling correlation will be visualize correlation
 
@@ -48,20 +48,21 @@ Column
 
 ### Method
 
-Identify the optimal combination of Nickel, Copper, and Aluminium to trade
+Identify the optimal combination of Corn, Soybean, and Wheat to trade
 
-1.	Product: Metals commodities and freight charters
-2.	Metal, Company, and Geography:
-    a. Nickel: MMC Norilisk, Russia
-    b. Copper: Codelco, Chile and MMC Norilisk, Russia
-    c. Aluminium: Vale, Brasil and Rio Tinto Alcan, Australia
+1.	Product: Ingrediant commodities and freight charters
+2.	Ingrediant, Company, and Geography:
+    a. Corn: West Bend, Iowa, United States
+    b. Soybean: Mato Grosso, Brazil
+    c. Wheat: Beijing, China
 3.	Customers: Ship Owners, manufacturers, traders
-4.  All metals traded on the London Metal Exchange 
+4.  All ingrediants traded on the Chicago Board of Trade commodity exchanges
 
 ### Stylized facts of the Metals market
 
-The London Metal Exchange (LME) is the world's centre for commodity exchange and the majority of non-ferrous metal is conducted on its' market.  
+The Chicago Board of Trade is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice. 
 
+<TODO - Update based on Chicago board of trade>
 - In 2016 the LME traded $10.3T USD notional, which included the exchange of 3.5B m/t
 - Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.
 - Past shocks persist and may or may not dampen (rock in a pool).
@@ -203,8 +204,8 @@ corr.rolling <- function(x) {
 ALL.r <- data.xts[, 1:3]
 window <- 90 #reactive({input$window})
 corr.returns <- rollapply(ALL.r, width = window, corr.rolling, align = "right", by.column = FALSE)
-#colnames(corr.returns) <- c("nickel & copper", "nickel & aluminium", "copper & aluminium")
-corr.returns.df <- data.frame(Date = index(corr.returns), nickel.copper = corr.returns[,1], nickel.aluminium = corr.returns[,2], copper.aluminium = corr.returns[,3])
+#colnames(corr.returns) <- c("Corn & Soybean", "Corn & Wheat", "Soybean & Wheat")
+corr.returns.df <- data.frame(Date = index(corr.returns), Corn.Soybean = corr.returns[,1], Corn.Wheat = corr.returns[,2], Soybean.Wheat = corr.returns[,3])
 
 # Market dependencies
 library(matrixStats)
@@ -216,23 +217,23 @@ rownames(R.corr.1) <- colnames(ALL.r[,1:3])
 colnames(R.corr.1) <- rownames(R.corr.1)	
 R.corr <- R.corr[, c(2, 3, 6)]
 colnames(R.corr) <- colnames(corr.returns) 	
-colnames(R.vols) <- c("nickel.vols", "copper.vols", "aluminium.vols")	
+colnames(R.vols) <- c("Corn.vols", "Soybean.vols", "Wheat.vols")	
 R.corr.vols <- na.omit(merge(R.corr, R.vols))
-nickel.vols <- as.numeric(R.corr.vols[,"nickel.vols"])	
-copper.vols <- as.numeric(R.corr.vols[,"copper.vols"])	
-aluminium.vols <- as.numeric(R.corr.vols[,"aluminium.vols"])
+Corn.vols <- as.numeric(R.corr.vols[,"Corn.vols"])	
+Soybean.vols <- as.numeric(R.corr.vols[,"Soybean.vols"])	
+Wheat.vols <- as.numeric(R.corr.vols[,"Wheat.vols"])
 library(quantreg)
 # hist(rho.fisher[, 1])
-nickel.corrs <- R.corr.vols[,1]
-#hist(nickel.corrs)
+Corn.corrs <- R.corr.vols[,1]
+#hist(Corn.corrs)
 taus <- seq(.05,.95,.05)	# Roger Koenker UI Bob Hogg and Allen Craig
-fit.rq.nickel.copper <- rq(nickel.corrs ~ copper.vols, tau = taus)	
-fit.lm.nickel.copper <- lm(nickel.corrs ~ copper.vols)	
+fit.rq.Corn.Soybean <- rq(Corn.corrs ~ Soybean.vols, tau = taus)	
+fit.lm.Corn.Soybean <- lm(Corn.corrs ~ Soybean.vols)	
 #' Some test statements	
-#summary(fit.rq.nickel.copper, se = "boot")
+#summary(fit.rq.Corn.Soybean, se = "boot")
 #'
-#summary(fit.lm.nickel.copper, se = "boot")
-#plot(summary(fit.rq.nickel.copper), parm = "copper.vols", main = "nickel-copper correlation sensitivity to copper volatility") #, ylim = c(-0.1 , 0.1))	
+#summary(fit.lm.Corn.Soybean, se = "boot")
+#plot(summary(fit.rq.Corn.Soybean), parm = "Soybean.vols", main = "Corn-Soybean correlation sensitivity to Soybean volatility") #, ylim = c(-0.1 , 0.1))	
 ```
 
 
@@ -244,16 +245,16 @@ Column
 
 ### Data Definitions
 
-- *Nickel*: daily nickel price (\$/per metric ton)
-- *Copper*: daily copper prices (\$/per metric ton)
-- *Aluminium *: daily aluminium prices (\$/per metric ton)
+- *Corn*: daily Corn price (\$/per metric ton)
+- *Soybean*: daily Soybean prices (\$/per metric ton)
+- *Wheat *: daily Wheat prices (\$/per metric ton)
 
 
 ### Historical data 2012-2016
 
-- Nickel has experienced a number of spikes in price and magnitude percentage change.  
-- Copper is less volatile in terms of price and magnitude percentage change
-- Aluminium experienced some shocks of volatility in 2015 and 2016
+- Corn has experienced a number of spikes in price and magnitude percentage change.  
+- Soybean is less volatile in terms of price and magnitude percentage change
+- Wheat experienced some shocks of volatility in 2015 and 2016
 
 ### Data and markets
 
@@ -309,7 +310,7 @@ sliderInput("alphaq", label = "Risk Measure quantiles (%):",
 Columnn {data-width=200}
 -----------------------------------------------------------------------
 
-### Nickel Value at Risk
+### Corn Value at Risk
 
 ```{r}
 #threshold <- reactive({input$threshold.q}) #BE SURE that {} included 
@@ -325,7 +326,7 @@ renderValueBox({
 })
 ```
 
-### Copper Value at Risk
+### Soybean Value at Risk
 
 ```{r}
 #threshold <- reactive({input$threshold.q}) #BE SURE that {} included 
@@ -341,7 +342,7 @@ renderValueBox({
 })
 ```
 
-### Aluminium Value at Risk
+### Wheat Value at Risk
 
 ```{r}
 #threshold <- reactive({input$threshold.q}) #BE SURE that {} included 
@@ -360,7 +361,7 @@ renderValueBox({
 Column {.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
-### Nickel Returns Distribution
+### Corn Returns Distribution
 
 ```{r}
 renderPlotly({
@@ -395,7 +396,7 @@ renderPlotly({
   })
 ```
 
-###  Copper Returns Distribution
+###  Soybean Returns Distribution
 
 ```{r}
 renderPlotly({
@@ -429,7 +430,7 @@ renderPlotly({
 })
 ```
 
-### Aluminium Returns Distribution
+### Wheat Returns Distribution
 
 ```{r}
 renderPlotly({
@@ -520,15 +521,15 @@ Market Risk
 Column
 -----------------------------------------------------------------------
 
-### Nickel, Copper, Aluminium Observations
-- The scatterplot illustrates some of the outliers of each of the three metals.  Aluminium appears to be more concentrated around the mean but also experienced its share of volatility
-- Copper is also closely grouped around its mean
-- Nickel experienced the most volatility with points appearing the furthest from the mean.
-- There is a strong correlation (.89) between nickel and copper.  This was initially expected since both of these metals are used in similar applications or in the creation of cupronickel alloy which is used for desalinisation due its high resistant to corrosion.  
-- Cupronickel is also used in a variety of other applications ranging from minting, armaments, marine engineering, electrical applications, and for the repair of fan blades found in geothermal power plants.  
+### Corn, Soybean, Wheat Observations
+- The scatterplot illustrates some of the outliers of each of the three metals.  Wheat appears to be more concentrated around the mean but also experienced its share of volatility
+- Soybean is also closely grouped around its mean
+- Corn experienced the most volatility with points appearing the furthest from the mean.
+- There is a strong correlation (.89) between Corn and Soybean.  This was initially expected since both of these metals are used in similar applications or in the creation of cuproCorn alloy which is used for desalinisation due its high resistant to corrosion.  
+- CuproCorn is also used in a variety of other applications ranging from minting, armaments, marine engineering, electrical applications, and for the repair of fan blades found in geothermal power plants.  
 
 
-### Nickel, Copper, Aluminium relationships
+### Corn, Soybean, Wheat relationships
 
 ```{r}
 #library(psych)
@@ -549,29 +550,29 @@ pairs.panels(corr.returns.df)
 Column {.tabset }
 -----------------------------------------------------------------------
 
-### nickel and copper (90 day rolling correlation)
+### Corn and Soybean (90 day rolling correlation)
 
 ```{r }
 renderPlotly({
-  p <- ggplot(corr.returns.df, aes(x = Date, y = nickel.copper)) + geom_line()
+  p <- ggplot(corr.returns.df, aes(x = Date, y = Corn.Soybean)) + geom_line()
   p	##ggplotly(p)
 })
 ```
 
-### nickel and aluminium (90 day rolling correlation)
+### Corn and Wheat (90 day rolling correlation)
 
 ```{r }
 renderPlotly({
-  p <- ggplot(corr.returns.df, aes(x = Date, y = nickel.aluminium)) + geom_line()
+  p <- ggplot(corr.returns.df, aes(x = Date, y = Corn.Wheat)) + geom_line()
   p	##ggplotly(p)
 })
 ```
 
-### copper and aluminium (90 day rolling correlation)
+### Soybean and Wheat (90 day rolling correlation)
 
 ```{r }
 renderPlotly({
-  p <- ggplot(corr.returns.df, aes(x = Date, y = copper.aluminium)) + geom_line()
+  p <- ggplot(corr.returns.df, aes(x = Date, y = Soybean.Wheat)) + geom_line()
   p	##ggplotly(p)
 })
 ```
@@ -582,13 +583,13 @@ renderPlotly({
 plot.zoo(R.corr.vols, main= "Monthly Correlations and Volatilities")
 ```
 
-### nickel - copper Dependency
+### Corn - Soybean Dependency
 
 ```{r}
 renderPlot({ 
-  plot(summary(fit.rq.nickel.copper), 
-       parm = "copper.vols", 
-       main = "nickel-copper correlation sensitivity to copper volatility")
+  plot(summary(fit.rq.Corn.Soybean), 
+       parm = "Soybean.vols", 
+       main = "Corn-Soybean correlation sensitivity to Soybean volatility")
 })
 ```
 
@@ -997,7 +998,7 @@ library(quadprog)
 
 R <- returns[,1:3]/100
 quantile_R <- quantile(R[,1], 0.95)
-#R <- subset(R, nickel > quantile_R, select = nickel:aluminium)
+#R <- subset(R, Corn > quantile_R, select = Corn:Wheat)
 names.R <- colnames(R)
 mean.R <-  apply(R,2,mean)
 cov.R <-  cov(R)
@@ -1049,7 +1050,7 @@ library(quadprog)
 
 R <- returns[,1:3]/100
 quantile_R <- quantile(R[,1], 0.95)
-#R <- subset(R, nickel > quantile_R, select = nickel:aluminium)
+#R <- subset(R, Corn > quantile_R, select = Corn:Wheat)
 names.R <- colnames(R)
 mean.R <-  apply(R,2,mean)
 cov.R <-  cov(R)
@@ -1168,9 +1169,9 @@ weights[ind,]*250000000
 ```
 
 * 250,000,000 denominated in euros
-* Buy 250,236,183 in nickel
-* Sell 1,577,898 in copper
-* Buy 1,341,715 in aluminium
+* Buy 250,236,183 in Corn
+* Sell 1,577,898 in Soybean
+* Buy 1,341,715 in Wheat
 
 
 With constraints:
@@ -1186,9 +1187,9 @@ weights[ind2,]*250000000
 ```
 
 * 250,000,000 denominated in euros
-* Buy 21,438,648 in nickel
-* Buy 113,727,083 in copper
-* Buy 114,834,269 in aluminium
+* Buy 21,438,648 in Corn
+* Buy 113,727,083 in Soybean
+* Buy 114,834,269 in Wheat
 
 Constraint: No Short Portfolio
 
@@ -1202,7 +1203,7 @@ weights.x[inx,]*250000000
 ```
 
 * 250,000,000 denominated in euros
-* Buy 250,000,000 in nickel
+* Buy 250,000,000 in Corn
 
 ** SAMPLE CODE OUTPUT **
 
@@ -1243,15 +1244,15 @@ Column
 ### Business Remarks
 
 
-- The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in nickel, \$yyy million in copper, \$zzz million in aluminium.
+- The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in Corn, \$yyy million in Soybean, \$zzz million in Wheat.
 
-- There is a strong correlation (0.89) between Metal-A (nickel) and Metal-B (copper) due to shared applications.
+- There is a strong correlation (0.89) between Metal-A (Corn) and Metal-B (Soybean) due to shared applications.
 
-- Creation of cupronickel alloy which is used for desalinisation due its high resistant to corrosion, minting, armaments, marine engineering, electrical applications, and many others, e.g. the repair of fan blades found in geothermal power plants. 
+- Creation of cuproCorn alloy which is used for desalinisation due its high resistant to corrosion, minting, armaments, marine engineering, electrical applications, and many others, e.g. the repair of fan blades found in geothermal power plants. 
     
-- Another example would be purchasing Copper from Codelco in Santiago, Chile and tramping it to General Electric, Schnectady, NY as part of GE's purchasing and procurement wing of their supply chain.  
+- Another example would be purchasing Soybean from Codelco in Santiago, Chile and tramping it to General Electric, Schnectady, NY as part of GE's purchasing and procurement wing of their supply chain.  
 
-- Aluminium is a metal which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving aluminium from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
+- Wheat is a metal which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving Wheat from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
 
 
 ### Recommendations
