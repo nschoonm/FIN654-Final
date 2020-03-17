@@ -155,7 +155,7 @@ if(dir.exists(paste(getwd(),"/data", sep = "")) == FALSE) {
 }
 ```
 
-```{r setup, include=FALSE}
+```{r Setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 library(ggplot2)
@@ -272,8 +272,8 @@ Column
 Column
 -----------------------------------------------------------------------
 
-### Metals Price Percent Changes
-```{r}
+### Ingrediant Price Percent Changes
+```{r Price Changes}
 renderPlotly({
   library(ggplot2)
   #library(ggfortify)
@@ -285,9 +285,9 @@ renderPlotly({
 })
 ```
 
-### Size of Metals Price Percent Changes
+### Size of Ingrediant Price Percent Changes
 
-```{r}
+```{r Size of Price Changes}
 renderPlotly({
   #title.chg1 <- "metals Price Percent Changes"
   #title.chg2 <- "Size of metals Price Percent Changes"
@@ -308,7 +308,7 @@ A quantile divides the returns distribution into two groups. For example 75\% of
 Pull slide to the right to measure the risk of returns at desired quantile levels. The minimum risk quantile is 75\%. The maximum risk quantile is 99\%.
 
 
-```{r}
+```{r Exploratory}
 sliderInput("alphaq", label = "Risk Measure quantiles (%):",
             min = 0.75, max = 0.99, value = 0.75, step = 0.01)
 ```
@@ -318,7 +318,7 @@ Columnn {data-width=200}
 
 ### Corn Value at Risk
 
-```{r}
+```{r Corn Value at Risk}
 #threshold <- reactive({input$threshold.q}) #BE SURE that {} included 
 renderValueBox({
   new_alpha1 <- input$alphaq
@@ -334,7 +334,7 @@ renderValueBox({
 
 ### Soybean Value at Risk
 
-```{r}
+```{r Soybean Value at Risk}
 #threshold <- reactive({input$threshold.q}) #BE SURE that {} included 
 renderValueBox({
   new_alpha1 <- input$alphaq
@@ -350,7 +350,7 @@ renderValueBox({
 
 ### Wheat Value at Risk
 
-```{r}
+```{r What Value at Risk}
 #threshold <- reactive({input$threshold.q}) #BE SURE that {} included 
 renderValueBox({
   new_alpha1 <- input$alphaq
@@ -369,7 +369,7 @@ Column {.tabset .tabset-fade}
 
 ### Corn Returns Distribution
 
-```{r}
+```{r Corn Returns}
 renderPlotly({
   returns1 <- returns[,1]
   colnames(returns1) <- "Returns" #kluge to coerce column name for df
@@ -404,7 +404,7 @@ renderPlotly({
 
 ###  Soybean Returns Distribution
 
-```{r}
+```{r Soybean Returns}
 renderPlotly({
   returns2 <- returns[,2]
   colnames(returns2) <- "Returns" #kluge to coerce column name for df
@@ -438,7 +438,7 @@ renderPlotly({
 
 ### Wheat Returns Distribution
 
-```{r}
+```{r Wheat Returns}
 renderPlotly({
   returns3 <- returns[,3]
   colnames(returns3) <- "Returns" #kluge to coerce column name for df
@@ -474,7 +474,7 @@ renderPlotly({
 
 ### ACF
 
-```{r }
+```{r ACF}
 require(graphics)
 renderPlot({
   returnz.value <- acf(coredata(data.xts[,1:3])) # returns
@@ -482,7 +482,7 @@ renderPlot({
 })
 ```
 
-```{r}
+```{r Correlation}
 require(graphics)
 renderPlot({
   returnz.size <- acf(coredata(data.xts[,4:5])) # sizes
@@ -492,7 +492,7 @@ renderPlot({
 
 ### Statistics
 
-```{r}
+```{r Statistics}
 ## data_moments function
 ## INPUTS: r vector
 ## OUTPUTS: list of scalars (mean, sd, median, skewness, kurtosis)
@@ -537,7 +537,7 @@ Column
 
 ### Corn, Soybean, Wheat relationships
 
-```{r}
+```{r Relationships}
 #library(psych)
 pairs.panels(corr.returns.df)
 ```
@@ -558,7 +558,7 @@ Column {.tabset }
 
 ### Corn and Soybean (90 day rolling correlation)
 
-```{r }
+```{r Corn and Soybean Rolling Correlation}
 renderPlotly({
   p <- ggplot(corr.returns.df, aes(x = Date, y = Corn.Soybean)) + geom_line()
   p	##ggplotly(p)
@@ -567,7 +567,7 @@ renderPlotly({
 
 ### Corn and Wheat (90 day rolling correlation)
 
-```{r }
+```{r Corn and Wheat Rolling Correlation}
 renderPlotly({
   p <- ggplot(corr.returns.df, aes(x = Date, y = Corn.Wheat)) + geom_line()
   p	##ggplotly(p)
@@ -576,7 +576,7 @@ renderPlotly({
 
 ### Soybean and Wheat (90 day rolling correlation)
 
-```{r }
+```{r Soybean and Wheat Rolling Correlation}
 renderPlotly({
   p <- ggplot(corr.returns.df, aes(x = Date, y = Soybean.Wheat)) + geom_line()
   p	##ggplotly(p)
@@ -585,13 +585,13 @@ renderPlotly({
 
 ### 30 day within-sample correlations and volatilities
 
-```{r}
+```{r Correlations and Vols}
 plot.zoo(R.corr.vols, main= "Monthly Correlations and Volatilities")
 ```
 
 ### Corn - Soybean Dependency
 
-```{r}
+```{r Corn and Soybean Dependency}
 renderPlot({ 
   plot(summary(fit.rq.Corn.Soybean), 
        parm = "Soybean.vols", 
@@ -620,7 +620,7 @@ $$
 
 ### Empirical loss
 
-```{r }
+```{r Loss Analysis}
 ## Now for Loss Analysis
 # Get last prices
 price.last <- as.numeric(tail(data[, -1], n=1))
@@ -640,17 +640,17 @@ alpha.tolerance <- .95
 VaR.hist <- quantile(loss.rf, probs=alpha.tolerance, names=FALSE)
 ## Just as simple Expected shortfall
 ES.hist <- median(loss.rf[loss.rf > VaR.hist])
-VaR.text <- paste("Value at Risk =\n", round(VaR.hist, 2)) # ="VaR"&c12
-ES.text <- paste("Expected Shortfall \n=", round(ES.hist, 2))
+VaR.text <- paste("Value at Risk =\n", round(VaR.hist, 4)) # ="VaR"&c12
+ES.text <- paste("Expected Shortfall \n=", round(ES.hist, 4))
 title.text <- paste(round(alpha.tolerance*100, 0), "% Loss Limits")
 renderPlotly({
   p <- ggplot(loss.rf.df, aes(x = Loss, fill = Distribution)) +
     geom_histogram(alpha = 0.8, bins=30) +
     geom_vline(aes(xintercept = VaR.hist), linetype = "dashed", size = 1, color = "blue") +
     geom_vline(aes(xintercept = ES.hist), size = 1, color = "blue") +
-    annotate("text", x = VaR.hist, y = 40, label = VaR.text) +
-    annotate("text", x = ES.hist, y = 20, label = ES.text) +
-    xlim(0, 500) + ggtitle(title.text)
+    annotate("text", x = VaR.hist, y = 200, label = VaR.text) +
+    annotate("text", x = ES.hist, y = 100, label = ES.text) +
+    xlim(-0.5, 0.5) + ggtitle(title.text)
   p	##ggplotly(p)
 })
 ```
@@ -698,7 +698,7 @@ $$
 
 ### Mean excess loss
 
-```{r}
+```{r Extreme}
 # mean excess plot to determine thresholds for extreme event management
 data <- as.vector(loss.rf) # data is purely numeric
 umin <-  min(data)         # threshold u min
@@ -734,7 +734,7 @@ renderPlotly({
 
 ### GPD fits and starts
 
-```{r}
+```{r GPD}
 #library(QRM)
 alpha.tolerance <- 0.95
 u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
@@ -766,7 +766,7 @@ renderPlotly({
 
 ### Confidence and risk measures
 
-```{r}
+```{r BFGS}
 showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
 ```
 
@@ -796,7 +796,7 @@ So that ...
 - and using 253 (2020 is a leap year) number of trading days
 - is calculated as (0.79 / 253) or :
 
-```{r}
+```{r Optimization}
 mu.free <- 0.79/253 ## input value of daily risk-free interest rate
 mu.free
 ```
@@ -861,7 +861,7 @@ $$
 - The algorithm used to solve the resulting linear programming problems is either the Frisch Newton algorithm described in Portnoy and Koenker (1997), or the closely related algorithm described in Koenker and Ng(2002) that handles linear inequality constraints. 
 - Linear inequality constraints can be imposed.
 
-```{r  mysize=TRUE, size='\\footnotesize', echo = TRUE}
+```{r Quantiles, mysize=TRUE, size='\\footnotesize', echo = TRUE}
 library(quantreg)
 x <- data.r/100
 n <- nrow(x)
@@ -897,7 +897,7 @@ pihat
 
 Trying a different distortion
 
-```{r  mysize=TRUE, size='\\footnotesize', echo = TRUE}
+```{r Returns, mysize=TRUE, size='\\footnotesize', echo = TRUE}
 library(quantreg)
 #library(dplyr) # use data.df now
 alpha <- 0.95
@@ -936,7 +936,7 @@ pihat
 
 ### Extreme frontier finance
 
-```{r }
+```{r Extreme Frontier}
 mu.0 <- xbar
 mu.P <- seq(-.0005, 0.0015, length = 100) ## set of 300 possible target portfolio returns
 qrisk.P <-  mu.P ## set up storage for quantile risks of portfolio returns
@@ -977,7 +977,7 @@ renderPlotly({
 
 ### Extreme portfolio risk measures
 
-```{r }
+```{r Extreme Portfolio}
 # price.last <- as.numeric(tail(data[, -1], n=1))
 # Specify the positions
 position.rf <- weights.extr #c(1/3, 1/3, 1/3)
@@ -999,7 +999,7 @@ renderPlot({
 
 ### Portfolio Analytics: the Markowitz model: default
 
-```{r }
+```{r Portfolio Analytics}
 library(quadprog)
 
 R <- returns[,1:3]/100
@@ -1051,7 +1051,7 @@ renderPlotly({
 
 ### Portfolio Analytics: the Markowitz model: no short
 
-```{r }
+```{r Markowitz}
 library(quadprog)
 
 R <- returns[,1:3]/100
