@@ -759,7 +759,7 @@ renderPlotly({
     geom_vline(aes(xintercept = VaR.gpd), colour = "blue", linetype = "dashed", size = 0.8)
   loss.plot <- loss.plot + 
     geom_vline(aes(xintercept = ES.gpd), colour = "blue", size = 0.8) 
-  loss.plot <- loss.plot + xlim(0,500) + ggtitle(title.text)
+  loss.plot <- loss.plot + xlim(0,0.3) + ggtitle(title.text)
   loss.plot	##ggplotly(loss.plot)
 })
 ```
