@@ -34,6 +34,8 @@ A restaurant with a several different recipes and menu options wants to optimize
 
 ### Data and analysis to inform the decision
 
+Data analysis highlights:
+
 - Spot market prices of Corn, Soybean, and Wheat
 - Corn and Soybean: correlation
 - Corn and Wheat: correlation
@@ -70,6 +72,8 @@ The Chicago Board of Trade is one of the major and most known commodity exchange
 - Negative returns are more likely than positive returns (left skew).
 
 ### Key business questions
+
+The following are the key business questions that will be answered in the conclusion section.
 
 1.	How would the performance of these commodities affect the size and timing of shipping arrangements?
 2.	How would the value of new shipping arrangements affect the value of our business with our current customers?
@@ -245,19 +249,21 @@ Column
 
 ### Data Definitions
 
-- *Corn*: daily Corn price (\$/per metric ton)
-- *Soybean*: daily Soybean prices (\$/per metric ton)
-- *Wheat *: daily Wheat prices (\$/per metric ton)
+- *Corn*: daily Corn price (\$/per bushel)
+- *Soybean*: daily Soybean prices (\$/per bushel)
+- *Wheat *: daily Wheat prices (\$/per bushel)
 
 
 ### Historical data 2012-2016
 
+- <TODO> Describe historical data
 - Corn has experienced a number of spikes in price and magnitude percentage change.  
 - Soybean is less volatile in terms of price and magnitude percentage change
 - Wheat experienced some shocks of volatility in 2015 and 2016
 
 ### Data and markets
 
+- <TODO> Update data source
 - Quandl for data
 - Github and Stack Overflow for trouble shooting
 - LME.com (London Metals Exchange)
@@ -784,7 +790,7 @@ So that ...
 - Choquet integrals build on Lebesgue measures by inflating or deflating the probabilities by the rank order of the outcomes.
 - Expected shortfall is an example of a Choquet, rank-ordered, criterion.
 
-**Note the `risk-free rate` given is likely incorrect - `RESEARCH AND FIX`**
+**The risk-free rate was**
 
 - obtained from https://www.treasury.gov/resource-center/data-chart-center/interest-rates/pages/textview.aspx?data=yield
 - and using 253 (2020 is a leap year) number of trading days
@@ -1168,6 +1174,7 @@ value <- percent(abs(weights[ind,]))
 weights[ind,]*250000000
 ```
 
+* <TODO> - Update numbers
 * 250,000,000 denominated in euros
 * Buy 250,236,183 in Corn
 * Sell 1,577,898 in Soybean
@@ -1186,6 +1193,7 @@ value <- percent(abs(weights[ind2,]))
 weights[ind2,]*250000000
 ```
 
+* <TODO> - Update numbers
 * 250,000,000 denominated in euros
 * Buy 21,438,648 in Corn
 * Buy 113,727,083 in Soybean
@@ -1202,10 +1210,9 @@ value <- percent(abs(weights.x[inx,]))
 weights.x[inx,]*250000000
 ```
 
+* <TODO> - Update numbers
 * 250,000,000 denominated in euros
 * Buy 250,000,000 in Corn
-
-** SAMPLE CODE OUTPUT **
 
 The weights for the Markowitz tangency [default] portfolio ("*") are
 
