@@ -25,8 +25,6 @@ This group assignment will cover Sessions 7 and 8 (two weeks). We built a simple
 
 ### Problem
 
-A restaurant with a several different recipes and menu options wants to optimize their portfolio in the ingrediants markets with entry into the corn business and use of the tramp trade.  Tramp ships are the company's "swing" option without any fixed charter or other constraint.
-
 We are a wholesale distributor of soybean and wheat; we are considering adding corn to our portfolio of commodities.  We currently distribute our product to food processors, animal feed producers, exporters, and other buyers.  We feel that many of our current customers will be attracted to this added commodity as it is used in many of their end products.  We will use future contracts as leverage to mitigate risk.  Future contracts will allow the company flexibility in managing price movement speculation.  They have allocated $250 million to purchase commodoties. The company wants us to:
 
 1.	Retrieve and begin to analyze data about potential commodities to diversify into
