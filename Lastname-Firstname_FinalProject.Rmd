@@ -253,19 +253,22 @@ Column
 - *Wheat *: daily Wheat prices (\$/per bushel)
 
 
-### Historical data 2012-2016
+### Historical data 2015-2020
 
 - <TODO> Describe historical data
 - Corn has experienced a number of spikes in price and magnitude percentage change.  
-- Soybean is less volatile in terms of price and magnitude percentage change
-- Wheat experienced some shocks of volatility in 2015 and 2016
+- Soybean is less volatile in terms of price and magnitude percentage change.
+- Wheat experienced the most volatility clustering of all the grains.
 
 ### Data and markets
 
 - <TODO> Update data source
-- Quandl for data
+- https://www.cmegroup.com/trading/agricultural/ for data
+- https://www.macrotrends.net/2534/wheat-prices-historical-chart-data for wheat data
+- https://www.macrotrends.net/2532/corn-prices-historical-chart-data for corn data
+- https://www.macrotrends.net/2531/soybean-prices-historical-chart-data for soybean data
 - Github and Stack Overflow for trouble shooting
-- LME.com (London Metals Exchange)
+
 
 
 Column
