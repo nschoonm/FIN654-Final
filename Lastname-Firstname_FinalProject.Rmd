@@ -75,9 +75,9 @@ The Chicago Board of Trade is one of the major and most known commodity exchange
 
 The following are the key business questions that will be answered in the conclusion section.
 
-1.	How would the performance of these commodities affect the size and timing of shipping arrangements?
-2.	How would the value of new shipping arrangements affect the value of our business with our current customers?
-3.	How would we manage the allocation of existing resources given we have just landed in this new market? 
+1.	How would we manage the allocation of existing resources given we have just landed in this new market?
+2.	How does this decision impact the business?
+3.	What are your recommendations? 
 
 
 Approach
