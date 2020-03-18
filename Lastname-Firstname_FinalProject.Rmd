@@ -62,14 +62,13 @@ Identify the optimal combination of Corn, Soybean, and Wheat to trade
 
 ### Stylized facts of the Metals market
 
-The Chicago Board of Trade is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice. 
+The Chicago Board of Trade (CBOT) is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice.  Today, CBOT is part of the Chicago Mercantile Exchange (CME) Group.
 
 <TODO - Update based on Chicago board of trade>
-- In 2016 the LME traded $10.3T USD notional, which included the exchange of 3.5B m/t
 - Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.
 - Past shocks persist and may or may not dampen (rock in a pool).
-- Extreme events are likely to happen with other extreme events.
-- Negative returns are more likely than positive returns (left skew).
+- Extreme events are likely to happen with other extreme events.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.
+- Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (skewness level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers.
 
 ### Key business questions
 
