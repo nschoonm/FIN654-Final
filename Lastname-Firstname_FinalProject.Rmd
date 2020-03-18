@@ -21,16 +21,18 @@ Column
 
 ### Purpose, Process, Product
 
-This group assignment will cover Sessions 7 and 8 (two weeks). We built a simple portfolio in Assignment 3 with equally weighted allocataions to the commodities we traded. We will represent a restaurant. We will compute optimal holdings of risky and risk-free assets for the Markowitz mean-variance model. We will then build a simple financial web application. With this tool we can also explore impact of the extremes of distributions of financial returns on portfolio results. 
+This group assignment will cover Sessions 7 and 8 (two weeks). We built a simple portfolio in Assignment 3 with equally weighted allocataions to the commodities we traded. We will represent a wholesale distributor. We will compute optimal holdings of risky and risk-free assets for the Markowitz mean-variance model. We will then build a simple financial web application. With this tool we can also explore impact of the extremes of distributions of financial returns on portfolio results. 
 
 ### Problem
 
-A restaurant with a several different recipes and menu options wants to optimize their portfolio in the ingrediants markets with entry into the corn business and use of the tramp trade.  Tramp ships are the company's "swing" option without any fixed charter or other constraint. They allow the company flexibility in managing several aspects of freight uncertainty.   They have allocated \$250 million to purchase ingrediants. The company wants us to:
+A restaurant with a several different recipes and menu options wants to optimize their portfolio in the ingrediants markets with entry into the corn business and use of the tramp trade.  Tramp ships are the company's "swing" option without any fixed charter or other constraint.
+
+We are a wholesale distributor of soybean and wheat; we are considering adding corn to our portfolio of commodities.  We currently distribute our product to food processors, animal feed producers, exporters, and other buyers.  We feel that many of our current customers will be attracted to this added commodity as it is used in many of their end products.  We will use future contracts as leverage to mitigate risk.  Future contracts will allow the company flexibility in managing price movement speculation.  They have allocated $250 million to purchase commodoties. The company wants us to:
 
 1.	Retrieve and begin to analyze data about potential commodities to diversify into
-2.	Compare potential commodities with existing commodities in conventional ingrediant spot markets
+2.	Compare potential commodities with existing commodities in conventional agricultural spot markets
 3.	Begin to generate economic scenarios based on events that may, or may not, materialize in the commodities
-4.	The company wants to mitigate their risk by diversifying their cargo loads
+4.	The company wants to mitigate their risk by using future contracts, which will require closely monotoring the agricultural spot market and continued speculation on future price movements.
 
 ### Data and analysis to inform the decision
 
@@ -52,13 +54,13 @@ Column
 
 Identify the optimal combination of Corn, Soybean, and Wheat to trade
 
-1.	Product: Ingrediant commodities and freight charters
-2.	Ingrediant, Company, and Geography:
+1.	Product: Agricultural commodities and future contracts
+2.	Commodity, Company, and Geography:
     a. Corn: West Bend, Iowa, United States
     b. Soybean: Mato Grosso, Brazil
     c. Wheat: Beijing, China
-3.	Customers: Ship Owners, manufacturers, traders
-4.  All ingrediants traded on the Chicago Board of Trade commodity exchanges
+3.	Customers: food processors, animal feed producers, exporters, and other buyers
+4.  All commodities traded on the Chicago Board of Trade commodity exchanges
 
 ### Stylized facts of the Metals market
 
