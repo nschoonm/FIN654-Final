@@ -262,7 +262,7 @@ Notes about the historical data for Corn, Soybean and Wheat.
 - Wheat experienced the most volatility clustering of all the grains.  We see that small changes are followed by small changes and large changes tend to be followed by large changes.
 
 ```{r Data summary}
-summary(data)
+summary(data.r)
 ```
 
 ### Data and markets
