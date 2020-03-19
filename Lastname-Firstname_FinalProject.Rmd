@@ -255,6 +255,8 @@ Column
 
 ### Historical data 2015-2020
 
+Notes about the historical data for Corn, Soybean and Wheat.
+
 - <TODO> Describe historical data
 - Corn has experienced a number of spikes in price and magnitude percentage change. In our data set corn experienced the lowest return at the end of June 2015 and the highest return in August 2019. 
 - Soybean is less volatile in terms of price and magnitude percentage change.
@@ -262,14 +264,13 @@ Column
 
 ### Data and markets
 
-- <TODO> Update data source
-- https://www.cmegroup.com/trading/agricultural/ for data
-- https://www.macrotrends.net/2534/wheat-prices-historical-chart-data for wheat data
-- https://www.macrotrends.net/2532/corn-prices-historical-chart-data for corn data
-- https://www.macrotrends.net/2531/soybean-prices-historical-chart-data for soybean data
+The following lists data sources and markets for trading. 
+
+- https://www.cmegroup.com/trading/agricultural/ for daily trading data
+- https://www.macrotrends.net/2534/wheat-prices-historical-chart-data for historical wheat data
+- https://www.macrotrends.net/2532/corn-prices-historical-chart-data for historical corn data
+- https://www.macrotrends.net/2531/soybean-prices-historical-chart-data for historical soybean data
 - Github and Stack Overflow for trouble shooting
-
-
 
 Column
 -----------------------------------------------------------------------
