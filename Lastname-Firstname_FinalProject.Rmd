@@ -207,7 +207,6 @@ corr.rolling <- function(x) {
 ALL.r <- data.xts[, 1:3]
 window <- 90 #reactive({input$window})
 corr.returns <- rollapply(ALL.r, width = window, corr.rolling, align = "right", by.column = FALSE)
-#colnames(corr.returns) <- c("Corn & Soybean", "Corn & Wheat", "Soybean & Wheat")
 corr.returns.df <- data.frame(Date = index(corr.returns), Corn.Soybean = corr.returns[,1], Corn.Wheat = corr.returns[,2], Soybean.Wheat = corr.returns[,3])
 
 # Market dependencies
@@ -219,7 +218,7 @@ R.corr.1 <- matrix(R.corr[20,], nrow = 3, ncol = 3, byrow = FALSE)
 rownames(R.corr.1) <- colnames(ALL.r[,1:3])	
 colnames(R.corr.1) <- rownames(R.corr.1)	
 R.corr <- R.corr[, c(2, 3, 6)]
-colnames(R.corr) <- colnames(corr.returns) 	
+colnames(R.corr) <- c("Corn & Soybean", "Corn & Wheat", "Soybean & Wheat")
 colnames(R.vols) <- c("Corn.vols", "Soybean.vols", "Wheat.vols")	
 R.corr.vols <- na.omit(merge(R.corr, R.vols))
 Corn.vols <- as.numeric(R.corr.vols[,"Corn.vols"])	
@@ -531,6 +530,8 @@ Column
 -----------------------------------------------------------------------
 
 ### Corn, Soybean, Wheat Observations
+Relationship and correlation observations.
+
 - <TODO> Update all this, its still based off metal information
 - The scatterplot illustrates some of the outliers of each of the three ingrediants.  Wheat appears to be more concentrated around the mean but also experienced its share of volatility
 - Soybean is also closely grouped around its mean
@@ -547,6 +548,7 @@ pairs.panels(corr.returns.df)
 ```
 
 ### Getting practical
+Useful information about market risk.
 
 - Using price returns we can compute loss. 
 
