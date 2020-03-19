@@ -281,8 +281,8 @@ renderPlotly({
   library(ggplot2)
   #library(ggfortify)
   library(plotly)
-  #title.chg1 <- "Metals Price Percent Changes"
-  #title.chg2 <- "Size of Metals Price Percent Changes"
+  #title.chg1 <- "Ingrediant Price Percent Changes"
+  #title.chg2 <- "Size of Ingrediants Price Percent Changes"
   p <- autoplot.zoo(data.xts[,1:3]) # + ggtitle(title.chg1) #+ ylim(-5, 5)
   ggplotly(p)
 })
@@ -292,8 +292,8 @@ renderPlotly({
 
 ```{r Size of Price Changes}
 renderPlotly({
-  #title.chg1 <- "metals Price Percent Changes"
-  #title.chg2 <- "Size of metals Price Percent Changes"
+  #title.chg1 <- "Ingrediants Price Percent Changes"
+  #title.chg2 <- "Size of Ingrediants Price Percent Changes"
   p <- autoplot.zoo(abs(data.xts[,1:3])) # + ggtitle(title.chg2) #+ ylim(-5, 5)
   ggplotly(p)
   })
@@ -531,11 +531,12 @@ Column
 -----------------------------------------------------------------------
 
 ### Corn, Soybean, Wheat Observations
-- The scatterplot illustrates some of the outliers of each of the three metals.  Wheat appears to be more concentrated around the mean but also experienced its share of volatility
+- <TODO> Update all this, its still based off metal information
+- The scatterplot illustrates some of the outliers of each of the three ingrediants.  Wheat appears to be more concentrated around the mean but also experienced its share of volatility
 - Soybean is also closely grouped around its mean
 - Corn experienced the most volatility with points appearing the furthest from the mean.
-- There is a strong correlation (.89) between Corn and Soybean.  This was initially expected since both of these metals are used in similar applications or in the creation of cuproCorn alloy which is used for desalinisation due its high resistant to corrosion.  
-- CuproCorn is also used in a variety of other applications ranging from minting, armaments, marine engineering, electrical applications, and for the repair of fan blades found in geothermal power plants.  
+- There is a strong correlation (.89) between Corn and Soybean.  This was initially expected since both of these ingrediant are used in similar applications or in the creation of bread? which is used for a significant number of base foods.  
+- Corn is also used in a variety of other applications ranging from minting, armaments, marine engineering, electrical applications, and for the repair of fan blades found in geothermal power plants.  
 
 
 ### Corn, Soybean, Wheat relationships
@@ -1253,16 +1254,17 @@ Column
 
 ### Business Remarks
 
+- <TODO> Update all bullets below, these numbers and information is incorrect
 
 - The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in Corn, \$yyy million in Soybean, \$zzz million in Wheat.
 
-- There is a strong correlation (0.89) between Metal-A (Corn) and Metal-B (Soybean) due to shared applications.
+- There is a strong correlation (0.89) between Ingrediant-A (Corn) and Ingrediant-B (Soybean) due to shared applications.
 
 - Creation of cuproCorn alloy which is used for desalinisation due its high resistant to corrosion, minting, armaments, marine engineering, electrical applications, and many others, e.g. the repair of fan blades found in geothermal power plants. 
     
 - Another example would be purchasing Soybean from Codelco in Santiago, Chile and tramping it to General Electric, Schnectady, NY as part of GE's purchasing and procurement wing of their supply chain.  
 
-- Wheat is a metal which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving Wheat from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
+- Wheat is an ingrediant which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving Wheat from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
 
 
 ### Recommendations
