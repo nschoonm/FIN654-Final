@@ -43,7 +43,7 @@ Data analysis highlights:
 - Corn and Soybean: Correlation sensitivity to Soybean dependency
 - All together: correlations and volaitlities among these indicators
 - Cross-section of rolling correlation will be visualize correlation
-- Value at Risk (VaR) represents our maximum expected loss with a certain confidence level and Expected Shortfall represents the expected loss in extreme cases, when the loss exceeds VaR
+- Value at Risk (VaR) represents our maximum expected loss given a certain confidence level and Expected Shortfall represents the expected loss in extreme cases, when the loss exceeds VaR
 
 
 Column
@@ -115,17 +115,14 @@ where $\Large ES$ is "expected shortfall" and $\Large E$ is the expectation oper
 
 ### Getting to a reponse: more detailed questions
 
-1. What is the decision the freight-forwarder must make? List key business questions and data needed to help answer these questions and support the freight-forwarder's decision.
+1. What is the decision the wholesale distributor must make? List key business questions and data needed to help answer these questions and support the wholesale distrubotor's decision.
 
-2. Develop a model to optimize the holdings of each of the three commodities. 
+2. Develop a model to optimize the holdings of each of the three commodities; corn, soybean, wheat 
 
 3. Run two scenarios: with and without short sales of the commodities. 
 
-4. Interpret results for the freight-forwarder, including tangency portfolio, amount of cash and equivalents in the portfolio allocation, minimum risk portfolio and the risk and return characteristics of each commodity.
+4. Interpret results for the wholesale distributor, including tangency portfolio, amount of cash and equivalents in the portfolio allocation, minimum risk portfolio and the risk and return characteristics of each commodity.
 
-5. A more advanced analysis would subset the returns data into body and tail of the distribution. Then we can examine how portfolio allocation works under two more scenarios.
-
-6. More importantly, begin to import your data into this model. You will have to modify some of the column subsets and all of the titles.
 
 ```{r Get current directory}
 # Get the directory so we can run this from anywhere
