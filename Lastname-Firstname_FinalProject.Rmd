@@ -995,7 +995,7 @@ weights.rf <- matrix(w, nrow=nrow(data.r), ncol=ncol(data.r), byrow=TRUE)
 ## We need to compute exp(x) - 1 for very small x: expm1 accomplishes this
 #head(rowSums((exp(data.r/100)-1)*weights.rf), n=4)
 loss.rf <- -rowSums(expm1(data.r/100) * weights.rf)
-alpha.tolerance <- 0.95
+alpha.tolerance <- 0.90
 u <- quantile(loss.rf, alpha.tolerance, names = FALSE)
 fit.extr <- fit.GPD(loss.rf, threshold = u)
 renderPlot({
