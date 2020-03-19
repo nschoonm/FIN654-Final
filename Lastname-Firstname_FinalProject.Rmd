@@ -21,7 +21,7 @@ Column
 
 ### Purpose, Process, Product
 
-This group assignment will cover Sessions 7 and 8 (two weeks). We built a simple portfolio in Assignment 3 with equally weighted allocataions to the commodities we traded. We will represent a wholesale distributor. We will compute optimal holdings of risky and risk-free assets for the Markowitz mean-variance model. We will then build a simple financial web application. With this tool we can also explore impact of the extremes of distributions of financial returns on portfolio results. 
+We will represent a wholesale distributor. We will compute optimal holdings of risky and risk-free assets for the Markowitz mean-variance model. We will then build a simple financial web application. With this tool we can also explore impact of the extremes of distributions of financial returns on portfolio results. 
 
 ### Problem
 
@@ -60,13 +60,13 @@ Identify the optimal combination of Corn, Soybean, and Wheat to trade
 3.	Customers: food processors, animal feed producers, exporters, and other buyers
 4.  All commodities traded on the Chicago Board of Trade commodity exchanges
 
-### Stylized facts of the Metals market
+### Stylized facts of the Agriculture market
 
 The Chicago Board of Trade (CBOT) is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice.  Today, CBOT is part of the Chicago Mercantile Exchange (CME) Group.
 
-<TODO - Update based on Chicago board of trade>
-- Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.
-- Past shocks persist and may or may not dampen (rock in a pool).
+<TODO - Update based on Chicago board of trade>:
+
+- Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.  In other words, over time the returns will move back to its average historical levels.  For the most part, it typically rises after it it falls too low and falls after rising too high.
 - Extreme events are likely to happen with other extreme events.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.
 - Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (skewness level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers.
 
@@ -256,9 +256,9 @@ Column
 ### Historical data 2015-2020
 
 - <TODO> Describe historical data
-- Corn has experienced a number of spikes in price and magnitude percentage change.  
+- Corn has experienced a number of spikes in price and magnitude percentage change. In our data set corn experienced the lowest return at the end of June 2015 and the highest return in August 2019. 
 - Soybean is less volatile in terms of price and magnitude percentage change.
-- Wheat experienced the most volatility clustering of all the grains.
+- Wheat experienced the most volatility clustering of all the grains.  We see that small changes are followed by small changes and large changes tend to be followed by large changes.
 
 ### Data and markets
 
@@ -274,7 +274,7 @@ Column
 Column
 -----------------------------------------------------------------------
 
-### Ingrediant Price Percent Changes
+### Commodity Price Percent Changes
 ```{r Price Changes}
 renderPlotly({
   library(ggplot2)
@@ -287,7 +287,7 @@ renderPlotly({
 })
 ```
 
-### Size of Ingrediant Price Percent Changes
+### Size of Commodity Price Percent Changes
 
 ```{r Size of Price Changes}
 renderPlotly({
