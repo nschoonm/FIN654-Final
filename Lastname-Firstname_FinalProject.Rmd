@@ -25,7 +25,7 @@ We will represent a wholesale distributor. We will compute optimal holdings of r
 
 ### Problem
 
-We are a wholesale distributor of soybean and wheat; we are considering adding corn to our portfolio of commodities.  We currently distribute our product to food processors, animal feed producers, exporters, and other buyers.  We feel that many of our current customers will be attracted to this added commodity as it is used in many of their end products.  We will use future contracts as leverage to help mitigate risk.  Future contracts will allow the company flexibility in managing price movement speculation.  The future contracts will allow us to take long or short positions depending on future market expectations.  They have allocated $250 million to purchase commodoties. The company wants us to:
+We are a wholesale distributor of soybean and wheat; we are considering adding corn to our portfolio of commodities.  We currently distribute our product to food processors, animal feed producers, exporters, and other buyers.  We feel that many of our current customers will be attracted to this added commodity as it is used in many of their end products.  We will use future contracts as leverage to help mitigate risk.  Future contracts will allow the company flexibility in managing price movement speculation.  The future contracts will allow us to take long or short positions depending on future market expectations.  They have allocated $250 million to purchase commodities. The company wants us to:
 
 1.	Retrieve and begin to analyze data about potential commodities to diversify into
 2.	Compare potential commodities with existing commodities in conventional agricultural spot markets
