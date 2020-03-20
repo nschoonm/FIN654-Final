@@ -1267,15 +1267,17 @@ Column
 
 - <TODO> Update all bullets below, these numbers and information is incorrect
 
-- The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in Corn, \$yyy million in Soybean, \$zzz million in Wheat.
+- The working capital account of \$250 million euro should be allocated as follows: buy \$260,880,889 million in Corn, \$20,553,257 million in Soybean, sell \$31,434,147 million in Wheat.
 
 - There is a strong correlation (0.89) between Ingrediant-A (Corn) and Ingrediant-B (Soybean) due to shared applications.
 
-- Creation of cuproCorn alloy which is used for desalinisation due its high resistant to corrosion, minting, armaments, marine engineering, electrical applications, and many others, e.g. the repair of fan blades found in geothermal power plants. 
+- Corn is used not only for human consumption but to feed livestock.  Also, higher energy prices has led to using corn for ethanol production.
     
-- Another example would be purchasing Soybean from Codelco in Santiago, Chile and tramping it to General Electric, Schnectady, NY as part of GE's purchasing and procurement wing of their supply chain.  
+- Wheat is used in animal feed and also in the production of flour for breads, pastas and more.  
 
-- Wheat is an ingrediant which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving Wheat from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
+- Soybeans are the most popular oilseed product with an almost limitless rang of uses, ranging from food to industrial products.  It's relatively stable price is testament to this.  
+
+- With grain, like with most tangible commodoties, supply and demand will determine the price.  All of these commodoties are contracted on a 5,000 bushel basis.  We can use future contracts on all these commodoties to mitigate risk by taking a long or short position in these contracts.  We feel that putting a no-short constraint on our portfolio limits the transfer of assets into optimal portfolio positions, decreasing the value of the added commodity.
 
 
 ### Recommendations
