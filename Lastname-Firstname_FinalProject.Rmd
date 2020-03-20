@@ -1258,7 +1258,7 @@ Why did you choose those weights (which model)?
   
 How does your decision impact the business?
 
-- We will have to enter into the future contracts market as a leverage tool, allowing us to take long and/or short positions in the market. Because they are traded at the Chicago Board of Trade (CBOT), offer more financial leverage than trading the commodoties themselves.  Trading futures contracts is done with a performance margin; therefore, it requires considerably less capital than the physical market.
+- We will have to enter into the future contracts market as a leverage tool, allowing us to take long and/or short positions in the market. Because they are traded at the Chicago Board of Trade (CBOT), offer more financial leverage than trading the commodoties themselves.  Trading futures contracts is done with a performance margin; therefore, it requires considerably less capital than the physical market.  Currently as a wholesale distributor we operate on the spot price, which is the current cash price forr the physical commodity in the market.  The futures contracts are based on a derivative contract for a delivery at a future date in time.  The difference between spot and futures prices in the market is referred to as the basis.  The basis is a crucial concept in managing our portfolio, because the this relationship between cash and futures prices affects the value of the contracts used in hedging.  The basis can be used to gauge the profitability of delivery of cash or the actual commodity and can be used to search for arbitrage opportunities. 
 
 What are your recommendations?
 
