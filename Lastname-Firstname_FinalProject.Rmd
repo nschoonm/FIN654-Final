@@ -1189,11 +1189,10 @@ value <- percent(abs(weights[ind,]))
 weights[ind,]*250000000
 ```
 
-* <TODO> - Update numbers
-* 250,000,000 denominated in euros
-* Buy 250,236,183 in Corn
-* Sell 1,577,898 in Soybean
-* Buy 1,341,715 in Wheat
+* 250,000,000 denominated in dollars
+* Buy 260,880,889 in Corn
+* Buy 20,553,257 in Soybean
+* Sell 31,434,147 in Wheat
 
 
 With constraints:
@@ -1208,11 +1207,10 @@ value <- percent(abs(weights[ind2,]))
 weights[ind2,]*250000000
 ```
 
-* <TODO> - Update numbers
-* 250,000,000 denominated in euros
-* Buy 21,438,648 in Corn
-* Buy 113,727,083 in Soybean
-* Buy 114,834,269 in Wheat
+* 250,000,000 denominated in dollars
+* Buy 52,090,069 in Corn
+* Buy 167,232,478 in Soybean
+* Buy 30,677,453 in Wheat
 
 Constraint: No Short Portfolio
 
@@ -1225,8 +1223,7 @@ value <- percent(abs(weights.x[inx,]))
 weights.x[inx,]*250000000
 ```
 
-* <TODO> - Update numbers
-* 250,000,000 denominated in euros
+* 250,000,000 denominated in dollars
 * Buy 250,000,000 in Corn
 
 The weights for the Markowitz tangency [default] portfolio ("*") are
