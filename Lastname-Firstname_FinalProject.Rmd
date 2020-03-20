@@ -65,11 +65,9 @@ Identify the optimal combination of Corn, Soybean, and Wheat to trade
 
 The Chicago Board of Trade (CBOT) is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice.  Today, CBOT is part of the Chicago Mercantile Exchange (CME) Group.
 
-<TODO - Update based on Chicago board of trade>:
-
-- Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.  In other words, over time the returns will move back to its average historical levels.  For the most part, it typically rises after it it falls too low and falls after rising too high.
-- Extreme events are likely to happen with other extreme events.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.
-- Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (skewness level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers.
+- Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.  In other words, over time the returns will move back to its average historical levels.  For the most part, it typically rises after it falls too low and falls after rising too high.
+- Supply and demand dynamics are the main reason commodity prices change.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.  As we have learned, extreme events are likely to happen with other extreme events.  
+- Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (kurtosis level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers (kurtosis level above 3).
 
 ### Key business questions
 
@@ -85,7 +83,7 @@ Approach
 
 ### Getting to a reponse: more detailed questions
 
-1. What is the decision the wholesale distributor must make? List key business questions and data needed to help answer these questions and support the wholesale distrubotor's decision.
+1. What is the decision the wholesale distributor must make? List key business questions and data needed to help answer these questions and support the wholesale distributors' decision.
 
 2. Develop a model to optimize the holdings of each of the three commodities; corn, soybean, wheat 
 
