@@ -1254,7 +1254,7 @@ Column
 
 Why did you choose those weights (which model)?
 
-- We chose the tangency portfolio with no constraints.  We feel that putting constraints on our portfolio limits the transfer of assets into optimal portfolio positions, decreasing the value of the added commodity.  
+- We chose the default tangency portfolio with no constraints.  We feel that putting constraints on our portfolio limits the transfer of assets into optimal portfolio positions, decreasing the value of the added commodity.  
   
 How does your decision impact the business?
 
@@ -1262,7 +1262,7 @@ How does your decision impact the business?
 
 What are your recommendations?
 
-- We will need to closely monitor current and future market expectations in order to effectively use the futures contracts in our portfolio.  It is also to benchmark your portfolio.  Benchmarking allows you to gauge risk-tolerance and expectations for return.  Even more important, benchmarking provides a basis for comparison of our portfolio perfomance with the rest of the market.  For commodoties, we found that the S&P GSCI Total Return Index is considered a good benchmark.  It holds all futures contracts for commodoties such as soybean, wheat, corn, etc.  The S&P GSCI index is considered more representative of the commodity market compared to similiar indexes.
+- We will need to closely monitor current and future market expectations in order to effectively use the futures contracts in our portfolio.  It is also crucial to benchmark our portfolio.  Benchmarking allows us to gauge risk-tolerance and expectations for return.  Even more important, benchmarking provides a basis for comparison of our portfolio perfomance with the rest of the market.  For commodoties, we found that the S&P GSCI Total Return Index is considered a good benchmark.  It holds all futures contracts for commodoties such as soybean, wheat, corn, etc.  The S&P GSCI index is considered more representative of the commodity market compared to similiar indexes.
 
 
 
