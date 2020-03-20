@@ -1262,8 +1262,6 @@ Column
 
 ### Business Remarks
 
-- <TODO> Update all bullets below, these numbers and information is incorrect
-
 - The working capital account of \$250 million euro should be allocated as follows: buy \$260,880,889 million in Corn, \$20,553,257 million in Soybean, sell \$31,434,147 million in Wheat.
 
 - There is a strong correlation (0.65) between Corn and Wheat.  We see moderate correlation (0.58) between Corn and Soybeans.  There is only a weak correlation (0.39) between Soybeans and Corn.
@@ -1274,22 +1272,21 @@ Column
 
 - Soybeans are the most popular oilseed product with an almost limitless rang of uses, ranging from food to industrial products.  It's relatively stable price is testament to this.  
 
-- With grain, like with most tangible commodoties, supply and demand will determine the price.  All of these commodoties are contracted on a 5,000 bushel basis.  We can use future contracts on all these commodoties to mitigate risk by taking a long or short position in these contracts.  We feel that putting a no-short constraint on our portfolio limits the transfer of assets into optimal portfolio positions, decreasing the value of the added commodity.
-
+- With grain, like with most tangible commodoties, supply and demand will determine the price.  All of these commodoties are contracted on a 5,000 bushel basis.  We can use future contracts on all these commodoties to mitigate risk by taking a long or short position in these contracts.  
 
 ### Recommendations
 
 Why did you choose those weights (which model)?
 
-- <TODO>
+- We chose the tangency portfolio with no constraints.  We feel that putting constraints on our portfolio limits the transfer of assets into optimal portfolio positions, decreasing the value of the added commodity.  
   
 How does your decision impact the business?
 
-- <TODO>
+- We will have to enter into the future contracts market as a leverage tool, allowing us to take long and/or short positions in the market. Because they are traded at the Chicago Board of Trade (CBOT), offer more financial leverage than trading the commodoties themselves.  Trading futures contracts is done with a performance margin; therefore, it requires considerably less capital than the physical market.
 
 What are your recommendations?
 
-- <TODO>
+- We will need to closely monitor current and future market expectations in order to effectively use the futures contracts in our portfolio.  It is also to benchmark your portfolio.  Benchmarking allows you to gauge risk-tolerance and expectations for return.  Even more important, benchmarking provides a basis for comparison of our portfolio perfomance with the rest of the market.  For commodoties, we found that the S&P GSCI Total Return Index is considered a good benchmark.  It holds all futures contracts for commodoties such as soybean, wheat, corn, etc.  The S&P GSCI index is considered more representative of the commodity market compared to similiar indexes.
 
 
 
