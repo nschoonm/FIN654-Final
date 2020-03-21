@@ -25,7 +25,7 @@ We will represent a wholesale distributor. We will compute optimal holdings of r
 
 ### Problem
 
-We are a wholesale distributor of soybean and wheat; we are considering adding corn to our portfolio of commodities.  We currently distribute our product to food processors, animal feed producers, exporters, and other buyers.  We feel that many of our current customers will be attracted to this added commodity as it is used in many of their end products.  We will use future contracts as leverage to help mitigate risk.  Future contracts will allow the company flexibility in managing price movement speculation.  The future contracts will allow us to take long or short positions depending on future price expectations.  They have allocated $250 million to purchase commodoties. The company wants us to:
+We are a wholesale distributor of soybean and wheat; we are considering adding corn to our portfolio of commodities.  We currently distribute our product to food processors, animal feed producers, exporters, and other buyers.  We feel that many of our current customers will be attracted to this added commodity as it is used in many of their end products.  We will use future contracts as leverage to help mitigate risk.  Future contracts will allow the company flexibility in managing price movement speculation.  The future contracts will allow us to take long or short positions depending on future market expectations.  They have allocated $250 million to purchase commodities. The company wants us to:
 
 1.	Retrieve and begin to analyze data about potential commodities to diversify into
 2.	Compare potential commodities with existing commodities in conventional agricultural spot markets
@@ -43,6 +43,7 @@ Data analysis highlights:
 - Corn and Soybean: Correlation sensitivity to Soybean dependency
 - All together: correlations and volaitlities among these indicators
 - Cross-section of rolling correlation will be visualize correlation
+- Value at Risk (VaR) represents our maximum expected loss given a certain confidence level and Expected Shortfall represents the expected loss in extreme cases, when the loss exceeds VaR
 
 
 Column
@@ -64,11 +65,9 @@ Identify the optimal combination of Corn, Soybean, and Wheat to trade
 
 The Chicago Board of Trade (CBOT) is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice.  Today, CBOT is part of the Chicago Mercantile Exchange (CME) Group.
 
-<TODO - Update based on Chicago board of trade>:
-
-- Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.  In other words, over time the returns will move back to its average historical levels.  For the most part, it typically rises after it it falls too low and falls after rising too high.
-- Extreme events are likely to happen with other extreme events.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.
-- Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (skewness level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers.
+- Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.  In other words, over time the returns will move back to its average historical levels.  For the most part, it typically rises after it falls too low and falls after rising too high.
+- Supply and demand dynamics are the main reason commodity prices change.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.  As we have learned, extreme events are likely to happen with other extreme events.  
+- Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (kurtosis level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers (kurtosis level above 3).
 
 ### Key business questions
 
@@ -82,49 +81,16 @@ The following are the key business questions that will be answered in the conclu
 Approach
 -----------------------------------------------------------------------
 
-
-### History speaks
-
-- We will develop the *value at risk* and *expected shortfall* metrics from the historical simulated distributions of risk factors.
-- Given these factors we will combine them into a portfolio and calculate their losses. 
-- With the loss distribution in hand we can compute the risk measures. - This approach is nonparametric.
-
-- We can then posit high quantile thresholds and explore risk measures the in the tails of the distributions.
-
-First we set the tolerance level $\Large\alpha$, for example, equal to 95\%. This would mean that a decision maker would not tolerate loss in  more than $\Large 1-\alpha$, or 5\%. of all risk scenarios under consideration.
-
-We define the VaR as the quantile for probability $\Large\alpha \in (0,1)$, as
-
-$$
-\Large
-VaR_{\alpha} (X) = inf \{ x \in R: F(x) \geq \alpha \},
-$$
-
-which means find the greatest lower bound of loss $\Large x$ (what the symbol $\Large inf$ = _infimum_ means in English), such that the cumulative probability of $\Large x$ is greater than or equal to $\Large \alpha$. 
-
-Using the $\Large VaR_{\alpha}$ definition we can also define $\Large ES$ as
-
-$$
-\Large
-ES_{\alpha} = E [X \lvert X \geq VaR_{\alpha}],
-$$
-
-where $\Large ES$ is "expected shortfall" and $\Large E$ is the expectation operator, also known as the "mean." Again, in English, the expected shortfall is the average of all losses greater than the loss at a $\Large VaR$ associated with probability $\Large \alpha$, and $\Large ES \geq VaR$.
-
-
 ### Getting to a reponse: more detailed questions
 
-1. What is the decision the freight-forwarder must make? List key business questions and data needed to help answer these questions and support the freight-forwarder's decision.
+1. What is the decision the wholesale distributor must make? List key business questions and data needed to help answer these questions and support the wholesale distributors' decision.
 
-2. Develop a model to optimize the holdings of each of the three commodities. 
+2. Develop a model to optimize the holdings of each of the three commodities; corn, soybean, wheat 
 
 3. Run two scenarios: with and without short sales of the commodities. 
 
-4. Interpret results for the freight-forwarder, including tangency portfolio, amount of cash and equivalents in the portfolio allocation, minimum risk portfolio and the risk and return characteristics of each commodity.
+4. Interpret results for the wholesale distributor, including tangency portfolio, amount of cash and equivalents in the portfolio allocation, minimum risk portfolio and the risk and return characteristics of each commodity.
 
-5. A more advanced analysis would subset the returns data into body and tail of the distribution. Then we can examine how portfolio allocation works under two more scenarios.
-
-6. More importantly, begin to import your data into this model. You will have to modify some of the column subsets and all of the titles.
 
 ```{r Get current directory}
 # Get the directory so we can run this from anywhere
@@ -260,6 +226,16 @@ Notes about the historical data for Corn, Soybean and Wheat.
 - Corn has experienced a number of spikes in price and magnitude percentage change. In our data set corn experienced the lowest return at the end of June 2015 and the highest return in August 2019. 
 - Soybean is less volatile in terms of price and magnitude percentage change.
 - Wheat experienced the most volatility clustering of all the grains.  We see that small changes are followed by small changes and large changes tend to be followed by large changes.
+
+```{r Data summary}
+summary(data.r)
+```
+
+### Correlation 
+
+```{r pairs.panels}
+pairs.panels(data.r)
+```
 
 ### Data and markets
 
@@ -1195,11 +1171,10 @@ value <- percent(abs(weights[ind,]))
 weights[ind,]*250000000
 ```
 
-* <TODO> - Update numbers
-* 250,000,000 denominated in euros
-* Buy 250,236,183 in Corn
-* Sell 1,577,898 in Soybean
-* Buy 1,341,715 in Wheat
+* 250,000,000 denominated in dollars
+* Buy 260,880,889 in Corn
+* Buy 20,553,257 in Soybean
+* Sell 31,434,147 in Wheat
 
 
 With constraints:
@@ -1214,11 +1189,10 @@ value <- percent(abs(weights[ind2,]))
 weights[ind2,]*250000000
 ```
 
-* <TODO> - Update numbers
-* 250,000,000 denominated in euros
-* Buy 21,438,648 in Corn
-* Buy 113,727,083 in Soybean
-* Buy 114,834,269 in Wheat
+* 250,000,000 denominated in dollars
+* Buy 52,090,069 in Corn
+* Buy 167,232,478 in Soybean
+* Buy 30,677,453 in Wheat
 
 Constraint: No Short Portfolio
 
@@ -1231,8 +1205,7 @@ value <- percent(abs(weights.x[inx,]))
 weights.x[inx,]*250000000
 ```
 
-* <TODO> - Update numbers
-* 250,000,000 denominated in euros
+* 250,000,000 denominated in dollars
 * Buy 250,000,000 in Corn
 
 The weights for the Markowitz tangency [default] portfolio ("*") are
@@ -1271,32 +1244,31 @@ Column
 
 ### Business Remarks
 
-- <TODO> Update all bullets below, these numbers and information is incorrect
+- The working capital account of \$250 million euro should be allocated as follows: buy \$260,880,889 million in Corn, \$20,553,257 million in Soybean, sell \$31,434,147 million in Wheat.
 
-- The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in Corn, \$yyy million in Soybean, \$zzz million in Wheat.
+- There is a strong correlation (0.65) between Corn and Wheat.  We see moderate correlation (0.58) between Corn and Soybeans.  There is only a weak correlation (0.39) between Soybeans and Corn.
 
-- There is a strong correlation (0.89) between Ingrediant-A (Corn) and Ingrediant-B (Soybean) due to shared applications.
-
-- Creation of cuproCorn alloy which is used for desalinisation due its high resistant to corrosion, minting, armaments, marine engineering, electrical applications, and many others, e.g. the repair of fan blades found in geothermal power plants. 
+- Corn is used not only for human consumption but to feed livestock.  Also, higher energy prices has led to using corn for ethanol production.
     
-- Another example would be purchasing Soybean from Codelco in Santiago, Chile and tramping it to General Electric, Schnectady, NY as part of GE's purchasing and procurement wing of their supply chain.  
+- Wheat is used in animal feed and in the production of flour for breads, pastas and more.  
 
-- Wheat is an ingrediant which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving Wheat from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
+- Soybeans are the most popular oilseed product with an almost limitless rang of uses, ranging from food to industrial products.  Its relatively stable price is testament to this.  
 
+- With grain, like with most tangible commodities, supply and demand will determine the price.  All of these commodities are contracted on a 5,000-bushel basis.  We can use future contracts on all these commodities to mitigate risk by taking a long or short position in these contracts.  
 
 ### Recommendations
 
 Why did you choose those weights (which model)?
 
-- <TODO>
+- We chose the default tangency portfolio with no constraints.  We feel that putting constraints on our portfolio limits the transfer of assets into optimal portfolio positions, decreasing the value of the added commodity.  
   
 How does your decision impact the business?
 
-- <TODO>
+- We will have to enter into the future contracts market as a leverage tool, allowing us to take long and/or short positions in the market. Because they are traded at the Chicago Board of Trade (CBOT), offer more financial leverage than trading the commodities themselves.  Trading futures contracts is done with a performance margin; therefore, it requires considerably less capital than the physical market.  Currently as a wholesale distributor we operate on the spot price, which is the current cash price for the physical commodity in the market.  The futures contracts are based on a derivative contract for a delivery at a future date in time.  The difference between spot and futures prices in the market is referred to as the basis.  The basis is a crucial concept in managing our portfolio, because this relationship between cash and futures prices affects the value of the contracts used in hedging.  The basis can be used to gauge the profitability of delivery of cash or the actual commodity and can be used to search for arbitrage opportunities. 
 
 What are your recommendations?
 
-- <TODO>
+- We will need to closely monitor current and future market expectations in order to effectively use the futures contracts in our portfolio.  It is also crucial to benchmark our portfolio.  Benchmarking allows us to gauge risk-tolerance and expectations for return.  Even more important, benchmarking provides a basis for comparison of our portfolio performance with the rest of the market.  For commodities, we found that the S&P GSCI Total Return Index is considered a good benchmark.  It holds all futures contracts for commodities such as soybean, wheat, corn, etc.  The S&P GSCI index is considered more representative of the commodity market compared to similar indexes.
 
 
 
