@@ -66,8 +66,8 @@ Identify the optimal combination of Corn, Soybean, and Wheat to trade
 The Chicago Board of Trade (CBOT) is one of the major and most known commodity exchanges operating with agricultural commodities such as corn, soybeans, wheat, oats, and rice.  Today, CBOT is part of the Chicago Mercantile Exchange (CME) Group.
 
 - Volatility is rarely constant and often has a structure (mean reversion) and is dependent on the past.  In other words, over time the returns will move back to its average historical levels.  For the most part, it typically rises after it falls too low and falls after rising too high.
-- Supply and demand dynamics are the main reason commodity prices change.  For instance, extreme weather events or an abundance of crop planting may affect supply and demand and drive price to extremes.  As we have learned, extreme events are likely to happen with other extreme events.  
-- Negative returns are more likely than positive returns (left skew) but tends to have light tails, with very few outliers (kurtosis level close to 3) for wheat.  For both corn and wheat, we see the opposite.  There is a higher likelihood of positive returns with more extreme outliers (kurtosis level above 3).
+- Supply and demand dynamics are the main reason commodity prices change.  For instance, extreme weather events or an abundance of crop planting will influence supply and demand and drive price to extremes.  As we have learned, extreme events are likely to happen with other extreme events.  
+- For wheat negative returns, though close to the mean, are more likely but there are fewer outliers.  For both corn and soybean, we see the opposite.  There is a higher likelihood of positive returns, close to the mean, but there are more extreme outliers, indicating a greater chance of extremely large deviations from the expected return.   
 
 ### Key business questions
 
