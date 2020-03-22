@@ -527,13 +527,13 @@ pairs.panels(corr.returns.df)
 ### Getting practical
 Useful information about market risk.
 
-- Using price returns we can compute loss. 
+- Using price returns we can compute loss.  Increase volatilty and uncertainty, increase the risk of shortfalls in the portfolio.
 
 - Weights for each are defined as the value of the positions in each risk factor. 
 
-- We can compute this as the notional (in tonnes equivalent for this market) times the last observed price.
+- We can compute this as the notional (in bushels equivalent for this market) times the last observed price.
 
-- Losses for a barrel equivalent of the three commodities are computed back into the sample relative to the most recently observed prices
+- Losses for a bushel equivalent of the three commodities are computed back into the sample relative to the most recently observed prices. Historical prices demonstrate the strong correlation of these commodities, with the exception of the recent COVID impact on the market.
 
 
 Column {.tabset }
