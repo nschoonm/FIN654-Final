@@ -1287,7 +1287,7 @@ Column
 
 ### Business Remarks
 
-- The working capital account of \$250 million euro should be allocated as follows: `r buy_sell_corn` `r dollar(abs(weights[ind,1]*money_to_spend))` in Corn, `r buy_sell_soybean` `r dollar(abs(weights[ind,2]*money_to_spend))` in Soybean, and `r buy_sell_wheat` `r dollar(abs(weights[ind,3]*money_to_spend))` in Wheat.
+- The working capital account of \$250 million should be allocated as follows: `r buy_sell_corn` `r dollar(abs(weights[ind,1]*money_to_spend))` in Corn, `r buy_sell_soybean` `r dollar(abs(weights[ind,2]*money_to_spend))` in Soybean, and `r buy_sell_wheat` `r dollar(abs(weights[ind,3]*money_to_spend))` in Wheat.
 
 - There is a strong correlation (0.65) between Corn and Wheat.  We see moderate correlation (0.58) between Corn and Soybeans.  There is only a weak correlation (0.39) between Soybeans and Corn.
 
