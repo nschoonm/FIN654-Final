@@ -1182,17 +1182,22 @@ No constraints:
 
 ```{r echo = FALSE}
 library(scales)
+money_to_spend <- 250000000
+spend_format <- format(money_to_spend, big.mark=",", scientific=FALSE)
 weights[ind,]
 name <- colnames(weights)
 posn <- ifelse((weights[ind,]<0), "go short (sell)", "go long, (buy)")
 value <- percent(abs(weights[ind,]))
-weights[ind,]*250000000
+weights[ind,]*money_to_spend
+buy_sell_corn <- ifelse(weights[ind,1] > 0, "Buy", "Short (Sell)")
+buy_sell_soybean <- ifelse(weights[ind,2] > 0, "Buy", "Short (Sell)")
+buy_sell_wheat <- ifelse(weights[ind,3] > 0, "Buy", "Short (Sell)")
 ```
 
-* 250,000,000 denominated in dollars
-* Buy 260,880,889 in Corn
-* Buy 20,553,257 in Soybean
-* Sell 31,434,147 in Wheat
+* `r spend_format` denominated in dollars
+* `r buy_sell_corn` `r dollar(weights[ind,1]*money_to_spend)` in Corn
+* `r buy_sell_soybean` `r dollar(weights[ind,2]*money_to_spend)` in Soybean
+* `r buy_sell_wheat` `r dollar(weights[ind,3]*money_to_spend)` in Wheat
 
 
 With constraints:
@@ -1204,13 +1209,16 @@ weights[ind2,]
 name <- colnames(weights)
 posn <- ifelse((weights[ind2,]<0), "go short (sell)", "go long, (buy)")
 value <- percent(abs(weights[ind2,]))
-weights[ind2,]*250000000
+weights[ind2,]*money_to_spend
+buy_sell_corn2 <- ifelse(weights[ind2,1] > 0, "Buy", "Short (Sell)")
+buy_sell_soybean2 <- ifelse(weights[ind2,2] > 0, "Buy", "Short (Sell)")
+buy_sell_wheat2 <- ifelse(weights[ind2,3] > 0, "Buy", "Short (Sell)")
 ```
 
-* 250,000,000 denominated in dollars
-* Buy 52,090,069 in Corn
-* Buy 167,232,478 in Soybean
-* Buy 30,677,453 in Wheat
+* `r spend_format` denominated in dollars
+* `r buy_sell_corn2` `r dollar(weights[ind2,1]*money_to_spend)` in Corn
+* `r buy_sell_soybean2` `r dollar(weights[ind2,2]*money_to_spend)` in Soybean
+* `r buy_sell_wheat2` `r dollar(weights[ind2,3]*money_to_spend)` in Wheat
 
 Constraint: No Short Portfolio
 
@@ -1220,11 +1228,16 @@ weights.x[inx,]
 name <- colnames(weights.x)
 posn <- ifelse((weights.x[inx,]<0), "go short (sell)", "go long, (buy)")
 value <- percent(abs(weights.x[inx,]))
-weights.x[inx,]*250000000
+weights.x[inx,]*money_to_spend
+buy_sell_corn3 <- ifelse(weights.x[inx,1] > 0, "Buy", "Short (Sell)")
+buy_sell_soybean3 <- ifelse(weights.x[inx,2] > 0, "Buy", "Short (Sell)")
+buy_sell_wheat3 <- ifelse(weights.x[inx,3] > 0, "Buy", "Short (Sell)")
 ```
 
-* 250,000,000 denominated in dollars
-* Buy 250,000,000 in Corn
+* `r spend_format` denominated in dollars
+* `r buy_sell_corn3` `r dollar(weights.x[inx,1]*money_to_spend)` in Corn
+* `r buy_sell_soybean3` `r dollar(weights.x[inx,2]*money_to_spend)` in Soybean
+* `r buy_sell_wheat3` `r dollar(weights.x[inx,3]*money_to_spend)` in Wheat
 
 The weights for the Markowitz tangency [default] portfolio ("*") are
 
