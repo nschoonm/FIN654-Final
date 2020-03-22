@@ -1364,4 +1364,3 @@ von Nuemann, J. and Morgenstern, O. (1944), Theory of games and economic behavio
 Zou, Hui and and Ming Yuan (2008), Composite quantile regression and the Oracle model selection theory, Annals of Statistics, 36, 1108-11120.
 
 Jacob Bunge, Kirk Maltais and Jesse Newman (2020) Coronavirus Hits Already Frail U.S. Farm Economy (https://www.wsj.com/articles/coronavirus-hits-already-frail-u-s-farm-economy-11584783001)
-
