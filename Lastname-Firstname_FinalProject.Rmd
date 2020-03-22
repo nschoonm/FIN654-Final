@@ -685,7 +685,7 @@ $$
 - we often exploit this property when we look at operational loss data.
 - Here is a mean excess loss plot for the `loss.rf` data. If there is a straight-line relationship after a threshold, then we have some evidence for the existence of a GPD for the tail.
 
-Column {data-width=600}
+Column {data-width=400}
 -----------------------------------------------------------------------
 ### Mean excess loss
 
@@ -727,7 +727,7 @@ renderPlotly({
     geom_line(aes(x = threshold, y = upper), colour = "red") +
     annotate("text", x = 0.2, y = 0.2, label = "upper 95%") +
     annotate("text", x = 0.2, y = -0.1, label = "lower 5%")
-  p2 <- ggplotly(p) %>% layout(height = 300, width = 900)
+  p2 <- ggplotly(p) %>% layout(height = 300)
   p2
 })
 ```
@@ -770,16 +770,18 @@ renderPlotly({
 })
 ```
 
-Column {data-width=200}
+Column {data-width=400}
 -----------------------------------------------------------------------
 ### Confidence and risk measures
 Confidence tolerance of 95%
 ```{r BFGS}
-  alpha.tolerance <- 0.95
-  u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
-  loss.excess <<- loss.rf[loss.rf > u]
-  fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
-  showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
+alpha.tolerance <- 0.95
+u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
+loss.excess <<- loss.rf[loss.rf > u]
+fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
+showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
+# Add graphs for Estimated tail probabilities for confidence interval x
+showRM(fit, alpha = 0.99, RM = "VaR", method = "BFGS")
 ```
 
 
