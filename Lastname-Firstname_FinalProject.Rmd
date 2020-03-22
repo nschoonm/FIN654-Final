@@ -720,13 +720,15 @@ renderPlotly({
   }
   mep.df <- data.frame(threshold = u, threshold.exceedances = e, lower = lower, upper = upper)
   loss.excess <<- loss.rf[loss.rf > u]
+  upper_text <- paste("upper ", round(alpha.confidence*100,0), "%")
+  lower_text <- paste("upper ", round((1 - alpha.confidence)*100,0), "%")
   # Voila the plot => you may need to tweak these limits!
   p <- ggplot(mep.df, aes( x= threshold, y = threshold.exceedances)) +
     geom_line() +
     geom_line(aes(x = threshold, y = lower), colour = "red") +
     geom_line(aes(x = threshold, y = upper), colour = "red") +
-    annotate("text", x = 0.2, y = 0.2, label = "upper 95%") +
-    annotate("text", x = 0.2, y = -0.1, label = "lower 5%")
+    annotate("text", x = 0.2, y = 0.2, label = upper_text) +
+    annotate("text", x = 0.2, y = -0.1, label = lower_text)
   p2 <- ggplotly(p) %>% layout(height = 300)
   p2
 })
@@ -779,11 +781,20 @@ alpha.tolerance <- 0.95
 u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
 loss.excess <<- loss.rf[loss.rf > u]
 fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
+xi.hat <- fit$par.ests[["xi"]] # fitted xi
+beta.hat <- fit$par.ests[["beta"]] # fitted beta
+fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
 showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
 # Add graphs for Estimated tail probabilities for confidence interval x
 showRM(fit, alpha = 0.99, RM = "VaR", method = "BFGS")
 ```
 
+### How good a fit to the data have we found?
+```{r Data fit}
+gpd.density <- pGPD(loss.excess, xi = xi.hat, beta = beta.hat)
+gpd.density.df <- data.frame(Density = gpd.density, Distribution = rep("GPD", each = length(gpd.density))) ## This should be U[0,1]
+ggplot(gpd.density.df, aes(x = Density, fill = Distribution)) + geom_histogram()
+```
 
 Optimization
 ==========================================================
@@ -806,17 +817,15 @@ So that ...
 
 **The risk-free rate was**
 
-- obtained from https://www.treasury.gov/resource-center/data-chart-center/interest-rates/pages/textview.aspx?data=yield
-- 1 month Daily Treasury Yield Curve Rate is 0.04% on 3/20/20
-- Using 253 (2020 is a leap year) as the number of trading days
-- Risk free rate is calculated as (0.04% / 253) or :
-
 ```{r Optimization}
 mu.free <- 0.0004/253 ## input value of daily risk-free interest rate
-mu.free
+#
 ```
 
-
+- Obtained from https://www.treasury.gov/resource-center/data-chart-center/interest-rates/pages/textview.aspx?data=yield
+- 1 month Daily Treasury Yield Curve Rate is 0.04% on 3/20/20
+- Using 253 (2020 is a leap year) as the number of trading days
+- Risk free rate is calculated as (0.04% / 253) = `r mu.free` or `r format(mu.free, scientific=FALSE)`
 
 
 ### Pessimism reigns
