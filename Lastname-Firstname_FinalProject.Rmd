@@ -508,12 +508,13 @@ Column
 ### Corn, Soybean, Wheat Observations
 Relationship and correlation observations.
 
-- <TODO> Update all this, its still based off metal information
-- The scatterplot illustrates some of the outliers of each of the three ingrediants.  Wheat appears to be more concentrated around the mean but also experienced its share of volatility
+- This distribution demonstrates volatility clustering which allows us to observe patterns in market behavior and persistent correlations in commodity price movements.
+- The scatterplot illustrates the outliers of each of the three ingredients.  Wheat appears to be more concentrated around the mean but also experienced its share of volatility.  This has a direct impact on risk measures associated to portfolio performance.
 - Soybean is also closely grouped around its mean
 - Corn experienced the most volatility with points appearing the furthest from the mean.
-- There is a strong correlation (.89) between Corn and Soybean.  This was initially expected since both of these ingrediant are used in similar applications or in the creation of bread? which is used for a significant number of base foods.  
-- Corn is also used in a variety of other applications ranging from minting, armaments, marine engineering, electrical applications, and for the repair of fan blades found in geothermal power plants.  
+- There is a strong correlation (.89) between Corn and Soybean.  This was initially expected since both ingredients are used in similar applications or in the creation of bread and other foods. Both are a significant raw product for several base foods.  
+- Corn is also used in a variety of other applications including animal feed, ethanol, and bio-based plastics. 
+- The current COVID pandemic is creating increased uncertainty and these commodities are not immune to it’s impact. Corn futures have shed nearly 10%, wheat futures have fallen nearly 2%, and soybean futures have dropped over 4%. (https://www.wsj.com/, 03/21/2020)  With increased volatility and uncertainty in the market, we can expect further decline and instability in prices.  We are beginning to see a volumetric risk, as the labor market for these commodities is being affected by the pandemic which could impact supply in the long run.
 
 
 ### Corn, Soybean, Wheat relationships
@@ -1362,4 +1363,5 @@ von Nuemann, J. and Morgenstern, O. (1944), Theory of games and economic behavio
 
 Zou, Hui and and Ming Yuan (2008), Composite quantile regression and the Oracle model selection theory, Annals of Statistics, 36, 1108-11120.
 
+Jacob Bunge, Kirk Maltais and Jesse Newman (2020) Coronavirus Hits Already Frail U.S. Farm Economy (https://www.wsj.com/articles/coronavirus-hits-already-frail-u-s-farm-economy-11584783001)
 
