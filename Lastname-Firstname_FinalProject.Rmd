@@ -1287,7 +1287,7 @@ Column
 
 ### Business Remarks
 
-- The working capital account of \$250 million euro should be allocated as follows: buy \$260,880,889 million in Corn, \$20,553,257 million in Soybean, sell \$31,434,147 million in Wheat.
+- The working capital account of \$250 million euro should be allocated as follows: sell \$17,817,571 million in Corn, buy \$216,343,824 million in Soybean, and sell  \$51,473,748 million in Wheat.
 
 - There is a strong correlation (0.65) between Corn and Wheat.  We see moderate correlation (0.58) between Corn and Soybeans.  There is only a weak correlation (0.39) between Soybeans and Corn.
 
