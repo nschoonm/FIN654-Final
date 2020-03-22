@@ -1206,9 +1206,9 @@ buy_sell_wheat <- ifelse(weights[ind,3] > 0, "Buy", "Short (Sell)")
 ```
 
 * `r spend_format` denominated in dollars
-* `r buy_sell_corn` `r dollar(weights[ind,1]*money_to_spend)` in Corn
-* `r buy_sell_soybean` `r dollar(weights[ind,2]*money_to_spend)` in Soybean
-* `r buy_sell_wheat` `r dollar(weights[ind,3]*money_to_spend)` in Wheat
+* `r buy_sell_corn` `r dollar(abs(weights[ind,1]*money_to_spend))` in Corn
+* `r buy_sell_soybean` `r dollar(abs(weights[ind,2]*money_to_spend))` in Soybean
+* `r buy_sell_wheat` `r dollar(abs(weights[ind,3]*money_to_spend))` in Wheat
 
 
 With constraints:
@@ -1227,9 +1227,9 @@ buy_sell_wheat2 <- ifelse(weights[ind2,3] > 0, "Buy", "Short (Sell)")
 ```
 
 * `r spend_format` denominated in dollars
-* `r buy_sell_corn2` `r dollar(weights[ind2,1]*money_to_spend)` in Corn
-* `r buy_sell_soybean2` `r dollar(weights[ind2,2]*money_to_spend)` in Soybean
-* `r buy_sell_wheat2` `r dollar(weights[ind2,3]*money_to_spend)` in Wheat
+* `r buy_sell_corn2` `r dollar(abs(weights[ind2,1]*money_to_spend))` in Corn
+* `r buy_sell_soybean2` `r dollar(abs(weights[ind2,2]*money_to_spend))` in Soybean
+* `r buy_sell_wheat2` `r dollar(abs(weights[ind2,3]*money_to_spend))` in Wheat
 
 Constraint: No Short Portfolio
 
@@ -1246,9 +1246,9 @@ buy_sell_wheat3 <- ifelse(weights.x[inx,3] > 0, "Buy", "Short (Sell)")
 ```
 
 * `r spend_format` denominated in dollars
-* `r buy_sell_corn3` `r dollar(weights.x[inx,1]*money_to_spend)` in Corn
-* `r buy_sell_soybean3` `r dollar(weights.x[inx,2]*money_to_spend)` in Soybean
-* `r buy_sell_wheat3` `r dollar(weights.x[inx,3]*money_to_spend)` in Wheat
+* `r buy_sell_corn3` `r dollar(abs(weights.x[inx,1]*money_to_spend))` in Corn
+* `r buy_sell_soybean3` `r dollar(abs(weights.x[inx,2]*money_to_spend))` in Soybean
+* `r buy_sell_wheat3` `r dollar(abs(weights.x[inx,3]*money_to_spend))` in Wheat
 
 The weights for the Markowitz tangency [default] portfolio ("*") are
 
@@ -1286,7 +1286,7 @@ Column
 
 ### Business Remarks
 
-- The working capital account of \$250 million euro should be allocated as follows: sell \$17,817,571 million in Corn, buy \$216,343,824 million in Soybean, and sell  \$51,473,748 million in Wheat.
+- The working capital account of \$250 million euro should be allocated as follows: `r buy_sell_corn` `r dollar(abs(weights[ind,1]*money_to_spend))` in Corn, `r buy_sell_soybean` `r dollar(abs(weights[ind,2]*money_to_spend))` in Soybean, and `r buy_sell_wheat` `r dollar(abs(weights[ind,3]*money_to_spend))` in Wheat.
 
 - There is a strong correlation (0.65) between Corn and Wheat.  We see moderate correlation (0.58) between Corn and Soybeans.  There is only a weak correlation (0.39) between Soybeans and Corn.
 
