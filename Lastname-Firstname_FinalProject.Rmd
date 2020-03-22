@@ -1049,16 +1049,17 @@ mark_default_slop <- ((mu.P[ind]-mu.free)/sigma.P[ind])
 renderPlotly({
   p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) +
     geom_line(aes(colour=col.P, group = col.P)) +
-    scale_colour_identity() # + xlim(0, max(sd.R*1.1))  + ylim(0, max(mean.R)*1.1) + 
+    scale_colour_identity() + xlim(0, max(sd.R*1.5)) + ylim(0, max(mean.R)*1.5)
   p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
   options(digits=4)
   p <- p + geom_abline(intercept = mu.free, slope = mark_default_slop, colour = "red")
   p <- p + geom_point(aes(x = sigma.P[ind], y = mu.P[ind], pch="*")) 
   p <- p + geom_point(aes(x = sigma.P[ind2], y = mu.P[ind2], pch="-")) ## show min var portfolio
-  p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) +
-    annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) +
-    annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-  p	### ggplotly(p)
+  p <- p + annotate("text", x = sd.R[1], y = 0.00005+mean.R[1], label = names.R[1]) + # Corn
+    annotate("text", x = sd.R[2]-0.01, y = 0.00001+mean.R[2], label = names.R[2]) + # Soybean
+    annotate("text", x = sd.R[3]-0.005, y = -0.00005+mean.R[3], label = names.R[3]) # Wheat
+  p2 <- ggplotly(p) %>% layout(height = 600, width = 800)
+  p2	### ggplotly(p)
 })
 ```
 
@@ -1101,16 +1102,17 @@ mark_no_short_slope <- ((mu.P[inx]-mu.free)/sigma.P[inx])
 renderPlotly({
   p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) +
     geom_line(aes(colour=col.P, group = col.P)) +
-    scale_colour_identity() # + xlim(0, max(sd.R*1.1))  + ylim(0, max(mean.R)*1.1) + 
+    scale_colour_identity() + xlim(0, max(sd.R*1.5)) + ylim(0, max(mean.R)*1.5)
   p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
   options(digits=4)
   p <- p + geom_abline(intercept = mu.free, slope = mark_no_short_slope, colour = "red")
-  p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="+")) 
+  p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="*")) 
   p <- p + geom_point(aes(x = sigma.P[inx2], y = mu.P[inx2], pch="-")) ## show min var portfolio
-  p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) +
-    annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) +
-    annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-  p	### ggplotly(p)
+  p <- p + annotate("text", x = sd.R[1], y = 0.00005+mean.R[1], label = names.R[1]) + # Corn
+    annotate("text", x = sd.R[2]-0.01, y = 0.00001+mean.R[2], label = names.R[2]) + # Soybean
+    annotate("text", x = sd.R[3]-0.005, y = -0.00005+mean.R[3], label = names.R[3]) # Wheat
+  p2 <- ggplotly(p) %>% layout(height = 600, width = 800)
+  p2	### ggplotly(p)
 })
 ```
 
