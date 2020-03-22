@@ -646,7 +646,7 @@ renderPlotly({
 
 Extremes
 =======================================================================
-Column {.tabset}
+Column {data-width=200}
 -----------------------------------------------------------------------
 ### Let's go to extremes
 
@@ -685,7 +685,10 @@ $$
 - we often exploit this property when we look at operational loss data.
 - Here is a mean excess loss plot for the `loss.rf` data. If there is a straight-line relationship after a threshold, then we have some evidence for the existence of a GPD for the tail.
 
+Column {data-width=600}
+-----------------------------------------------------------------------
 ### Mean excess loss
+
 ```{r Confidence level}
 sliderInput("confidencelevel", label = "Confidence level (%):",
             min = 0.50, max = 0.99, value = 0.95, step = 0.01)
@@ -693,11 +696,10 @@ sliderInput("confidencelevel", label = "Confidence level (%):",
 
 ```{r Extreme}
 # mean excess plot to determine thresholds for extreme event management
-loss.excess <- 0
 
 renderPlotly({
   data <- as.vector(loss.rf) # data is purely numeric
-  umin <-  min(data)         # threshold u min
+  umin <-  min(data) + 0.3         # threshold u min
   umax <-  max(data) - 0.1   # threshold u max
   nint <- 100                # grid length to generate mean excess plot
   grid.0 <- numeric(nint)    # grid store
@@ -707,14 +709,14 @@ renderPlotly({
   u <- seq(umin, umax, length = nint) # threshold u grid
 
   #alpha <- 0.95                  # confidence level
-  alpha <- input$confidencelevel
+  alpha.confidence <- input$confidencelevel
   for (i in 1:nint) {
     data <- data[data > u[i]]  # subset data above thresholds
     e[i] <- mean(data - u[i])  # calculate mean excess of threshold
     sdev <- sqrt(var(data))    # standard deviation
     n <- length(data)          # sample size of subsetted data above thresholds
-    upper[i] <- e[i] + (qnorm((1 + alpha)/2) * sdev)/sqrt(n) # upper confidence interval
-    lower[i] <- e[i] - (qnorm((1 + alpha)/2) * sdev)/sqrt(n) # lower confidence interval
+    upper[i] <- e[i] + (qnorm((1 + alpha.confidence)/2) * sdev)/sqrt(n) # upper confidence interval
+    lower[i] <- e[i] - (qnorm((1 + alpha.confidence)/2) * sdev)/sqrt(n) # lower confidence interval
   }
   mep.df <- data.frame(threshold = u, threshold.exceedances = e, lower = lower, upper = upper)
   loss.excess <<- loss.rf[loss.rf > u]
@@ -725,7 +727,8 @@ renderPlotly({
     geom_line(aes(x = threshold, y = upper), colour = "red") +
     annotate("text", x = 0.2, y = 0.2, label = "upper 95%") +
     annotate("text", x = 0.2, y = -0.1, label = "lower 5%")
-  p ##ggplotly(p)
+  p2 <- ggplotly(p) %>% layout(height = 300, width = 900)
+  p2
 })
 ```
 
@@ -733,20 +736,24 @@ renderPlotly({
 
 ```{r GPD}
 #library(QRM)
-alpha.tolerance <- 0.95
-u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
-fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
-xi.hat <- fit$par.ests[["xi"]] # fitted xi
-beta.hat <- fit$par.ests[["beta"]] # fitted beta
-data <- loss.rf
-n.relative.excess <- length(loss.excess) / length(loss.rf) # = N_u/n
-VaR.gpd <- u + (beta.hat/xi.hat)*(((1-alpha.tolerance) / n.relative.excess)^(-xi.hat)-1) 
-ES.gpd <- (VaR.gpd + beta.hat-xi.hat*u) / (1-xi.hat)
-n.relative.excess <- length(loss.excess) / length(loss.rf) # = N_u/n
-VaR.gpd <- u + (beta.hat/xi.hat)*(((1-alpha.tolerance) / n.relative.excess)^(-xi.hat)-1) 
-ES.gpd <- (VaR.gpd + beta.hat-xi.hat*u) / (1-xi.hat)
 # Plot away
 renderPlotly({
+  library(QRM)
+  #alpha.tolerance <- 0.95
+  alpha.tolerance <- input$confidencelevel
+  u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
+  loss.excess <<- loss.rf[loss.rf > u]
+  fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
+  xi.hat <- fit$par.ests[["xi"]] # fitted xi
+  beta.hat <- fit$par.ests[["beta"]] # fitted beta
+  data <- loss.rf
+  n.relative.excess <- length(loss.excess) / length(loss.rf) # = N_u/n
+  VaR.gpd <- u + (beta.hat/xi.hat)*(((1-alpha.tolerance) / n.relative.excess)^(-xi.hat)-1) 
+  ES.gpd <- (VaR.gpd + beta.hat-xi.hat*u) / (1-xi.hat)
+  n.relative.excess <- length(loss.excess) / length(loss.rf) # = N_u/n
+  VaR.gpd <- u + (beta.hat/xi.hat)*(((1-alpha.tolerance) / n.relative.excess)^(-xi.hat)-1) 
+  ES.gpd <- (VaR.gpd + beta.hat-xi.hat*u) / (1-xi.hat)
+
   VaRgpd.text <- paste("GPD: Value at Risk =", round(VaR.gpd, 2))
   ESgpd.text <- paste("Expected Shortfall =", round(ES.gpd, 2))
   title.text <- paste(VaRgpd.text, ESgpd.text, sep = " ")
@@ -756,15 +763,23 @@ renderPlotly({
     geom_vline(aes(xintercept = VaR.gpd), colour = "blue", linetype = "dashed", size = 0.8)
   loss.plot <- loss.plot + 
     geom_vline(aes(xintercept = ES.gpd), colour = "blue", size = 0.8) 
-  loss.plot <- loss.plot + xlim(0,0.3) + ggtitle(title.text)
+  loss.plot <- loss.plot + xlim(0,0.5) + ggtitle(title.text)
+  loss.plot <- loss.plot + annotate("text", x = VaR.gpd, y = 10, label = VaRgpd.text)
+  loss.plot <- loss.plot + annotate("text", x = ES.gpd, y = 5, label = ESgpd.text)
   loss.plot	##ggplotly(loss.plot)
 })
 ```
 
+Column {data-width=200}
+-----------------------------------------------------------------------
 ### Confidence and risk measures
-
+Confidence tolerance of 95%
 ```{r BFGS}
-showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
+  alpha.tolerance <- 0.95
+  u <- quantile(loss.rf, alpha.tolerance , names=FALSE)
+  loss.excess <<- loss.rf[loss.rf > u]
+  fit <- fit.GPD(loss.rf, threshold=u) # Fit GPD to the excesses
+  showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
 ```
 
 
