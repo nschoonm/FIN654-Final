@@ -805,11 +805,12 @@ So that ...
 **The risk-free rate was**
 
 - obtained from https://www.treasury.gov/resource-center/data-chart-center/interest-rates/pages/textview.aspx?data=yield
-- and using 253 (2020 is a leap year) number of trading days
-- is calculated as (0.79 / 253) or :
+- 1 month Daily Treasury Yield Curve Rate is 0.04 on 3/20/20
+- Using 253 (2020 is a leap year) as the number of trading days
+- Risk free rate is calculated as (0.04 / 253) or :
 
 ```{r Optimization}
-mu.free <- 0.79/253 ## input value of daily risk-free interest rate
+mu.free <- 0.04/253 ## input value of daily risk-free interest rate
 mu.free
 ```
 
