@@ -10,7 +10,9 @@ date: "`r format(Sys.time(), '%m/%d/%Y')`"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
-    theme: "spacelab"
+    theme: readable
+    highlight: tango
+    logo: "data/corn_wheat_soybean.jpg"
 runtime: shiny
 ---
 
@@ -123,6 +125,8 @@ if(dir.exists(paste(getwd(),"/data", sep = "")) == FALSE) {
 
 ```{r Setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(blogdown)
+rmarkdown::render_site()
 
 library(ggplot2)
 library(flexdashboard)
@@ -307,7 +311,7 @@ renderValueBox({
   q <- quantile(returns1,alpha1)
   VaR.hist <- q
   valueBox(round(VaR.hist, 2),
-           icon = "fa-ship", color = "light-blue")
+           icon = "fa-mortar-pestle", color = "light-blue")
 })
 ```
 
@@ -323,7 +327,7 @@ renderValueBox({
   q <- quantile(returns1,alpha1)
   VaR.hist <- q
   valueBox(round(VaR.hist, 2),
-           icon = "fa-ship", color = "light-blue")
+           icon = "fa-mortar-pestle", color = "light-blue")
 })
 ```
 
@@ -338,8 +342,9 @@ renderValueBox({
   colnames(returns1) <- "Returns" #kluge to coerce column name for df below
   q <- quantile(returns1,alpha1)
   VaR.hist <- q
+  # fa-cube, fa-cubes, fa-leaf, fa-mortar-pestle, fa-seedling
   valueBox(round(VaR.hist, 2),
-           icon = "fa-ship", color = "light-blue")
+           icon = "fa-mortar-pestle", color = "light-blue")
 })
 ```
 
