@@ -1374,3 +1374,21 @@ von Nuemann, J. and Morgenstern, O. (1944), Theory of games and economic behavio
 Zou, Hui and and Ming Yuan (2008), Composite quantile regression and the Oracle model selection theory, Annals of Statistics, 36, 1108-11120.
 
 Jacob Bunge, Kirk Maltais and Jesse Newman (2020) Coronavirus Hits Already Frail U.S. Farm Economy (https://www.wsj.com/articles/coronavirus-hits-already-frail-u-s-farm-economy-11584783001)
+
+http://www.greenwichai.com/index.php/hf-essentials/measure-of-risk
+
+https://www.investopedia.com/terms/c/conditional_value_at_risk.asp
+
+https://www.risk.net/risk-magazine/technical-paper/1506669/var-versus-expected-shortfall
+
+https://www.risk.net/definition/value-at-risk-var
+
+https://www.investopedia.com/ask/answers/041615/what-does-value-risk-var-say-about-tail-loss-distribution.asp
+
+https://www.plindia.com/blog/risks-associated-with-agricultural-commodities-trading/
+
+http://www.arborinvestmentplanner.com/portfolio-rebalancing-portfolio-weighting-strategies/
+
+http://news.morningstar.com/classroom2/course.asp?docId=145385&page=6&CN=COM
+
+https://books.google.com/books?id=zun4Xl9tcMMC&pg=PA171&lpg=PA171&dq=risk+and+return+characteristics+of+corn+soybean+wheat&source=bl&ots=JKF1z5o87h&sig=ACfU3U0WWpcY1zO1jkrj28TdjltgJGeXsQ&hl=en&sa=X&ved=2ahUKEwj74pu5zKfoAhXZVs0KHSB4AOkQ6AEwCHoECAgQAQ#v=onepage&q=risk%20and%20return%20characteristics%20of%20corn%20soybean%20wheat&f=false
