@@ -1,11 +1,12 @@
 ---
 title: 'Final'
-#author:
-#- Nicolas Schoonmaker
-#- Guillermo Delgado
-#- Katie Guillen
-#- Leanne Harper
-#date: "`r format(Sys.time(), '%m/%d/%Y')`"
+author:
+- Group 3
+- Nicolas Schoonmaker
+- Guillermo Delgado
+- Katie Guillen
+- Leanne Harper
+date: "`r format(Sys.time(), '%m/%d/%Y')`"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -961,6 +962,7 @@ pihat
 
 ### Extreme frontier finance
 
+Weights
 ```{r Extreme Frontier}
 mu.0 <- xbar
 mu.P <- seq(-.0005, 0.0015, length = 100) ## set of 300 possible target portfolio returns
@@ -985,6 +987,7 @@ col.P <- ifelse(mu.P > mu.P[ind2], "blue", "grey")
 weights.extr <- weights[ind,] # for use in calculating tengency risk measures
 qrisk.mu.df$col.P <- col.P
 eff_slope <- ((mu.P[ind]-mu.free) / qrisk.P[ind])
+(weights.extr)
 renderPlotly({
   p <- ggplot(qrisk.mu.df, aes(x = qrisk.P, y = mu.P, group = 1))
   p <- p + geom_line(aes(colour= col.P, group = col.P))
@@ -996,7 +999,8 @@ renderPlotly({
                        colour = "red")
   p <- p + geom_point(aes(x = qrisk.P[ind], y = mu.P[ind])) 
   p <- p + geom_point(aes(x = qrisk.P[ind2], y = mu.P[ind2])) 
-  p	### ggplotly(p)
+  p2 <- ggplotly(p) %>% layout(height = 600, width = 600)
+  p2	### ggplotly(p)
 })
 ```
 
