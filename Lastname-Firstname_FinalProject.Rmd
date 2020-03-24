@@ -1321,7 +1321,7 @@ How does your decision impact the business?
 
 What are your recommendations?
 
-- We will need to closely monitor current and future market expectations in order to effectively use the futures contracts in our portfolio.  It is also crucial to benchmark our portfolio.  Benchmarking allows us to gauge risk-tolerance and expectations for return.  Even more important, benchmarking provides a basis for comparison of our portfolio performance with the rest of the market.  For commodities, we found that the S&P GSCI Total Return Index is considered a good benchmark.  It holds all futures contracts for commodities such as soybean, wheat, corn, etc.  The S&P GSCI index is considered more representative of the commodity market compared to similar indexes.
+- We will need to closely monitor current and future market expectations in order to effectively use the futures contracts in our portfolio.  It is also crucial to benchmark our portfolio.  Benchmarking allows us to gauge risk-tolerance and expectations for return.  Even more important, benchmarking provides a basis for comparison of our portfolio performance with the rest of the market.  For commodities, we found that the S&P GSCI Total Return Index is considered a good benchmark.  It holds all futures contracts for commodities such as soybean, wheat, corn, etc.  The S&P GSCI index is considered more representative of the commodity market compared to similar indexes.  We will need to consider rebalancing our portfolio based on these benchmarks and market expectations as we continue to update and analyze the data.  We also should consider investing in a commodity that shows negative correlation to our current commodities to use as a hedging tool.
 
 
 
